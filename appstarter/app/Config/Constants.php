@@ -92,3 +92,9 @@ define('EVENT_PRIORITY_NORMAL', 100);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_HIGH instead.
  */
 define('EVENT_PRIORITY_HIGH', 10);
+
+/* Constante pour le login admin */
+define("APP_ADMIN_LOGIN", 'administrator');
+
+/* Meme chose pour le mdp */
+define('APP_ADMIN_PASSWORD', 'admin');
