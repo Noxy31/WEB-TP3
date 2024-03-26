@@ -6,7 +6,7 @@ class Connection extends BaseController
 {
     public function index(): string
     {
-        return view('login_form.php');
+        return view('login_form');
     }
 
     public function attemptLogin(): string
@@ -16,7 +16,7 @@ class Connection extends BaseController
             !empty($values) && $values['login'] == APP_ADMIN_LOGIN &&
             $values['password'] == APP_ADMIN_PASSWORD
         ) {
-            return redirect()->to('/home.php');
+            return redirect()->to('/admin_home');
         } else {
             return "On a pas réussi à se connecter !";
         }
