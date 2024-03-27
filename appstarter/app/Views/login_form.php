@@ -43,7 +43,7 @@
             display: block;
             transition: .4s ease-in;
             font-family: 'Jellee', sans-serif;
-            font-size: 1rem;
+            font-size: 1.5rem;
         }
 
         .CB:hover {
@@ -61,7 +61,7 @@
 
         .input1,
         .input2 {
-            margin-bottom: 20px;
+            margin-bottom: 60px;
             margin-right: 3vw;
             width: 300px;
             height: 20px;
