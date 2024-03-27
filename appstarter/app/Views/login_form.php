@@ -32,23 +32,23 @@
             font-size: 3rem;
             font-weight: 5px;
             color: #fffff0;
+            margin-top: 15vh;
         }
 
         .CB {
-            border-radius: 6px;
+            border-radius: 10px;
             width: 250px;
             height: 60px;
             margin-top: 5vh;
-            margin-left: 43vw;
-            display: block;
-            transition: .4s ease-in;
+            transition: .3s ease-in;
             font-family: 'Jellee', sans-serif;
             font-size: 1.5rem;
+            
         }
 
         .CB:hover {
-            box-shadow: 0 0 5px #E8BCB9, 0 0 25px #F39F5A, 0 0 50px #AE445A, 0 0 200px #662549,
-                inset 0 0 5px #E8BCB9, inset 0 0 25px #F39F5A, inset 0 0 50px #AE445A, inset 0 0 200px #662549;
+            box-shadow: inset 0 0 5px #1D1A32, inset 0 0 25px #1D1A48, inset 0 0 50px #1D1A52, inset 0 0 200px #1D1A39;
+            color: white;
 
         }
 
@@ -56,17 +56,21 @@
             padding-top: 10vh;
             text-align: center;
             color: #fffff0;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .input1,
         .input2 {
-            margin-bottom: 60px;
-            margin-right: 3vw;
+            margin-bottom: 40px;
             width: 300px;
             height: 20px;
             border-radius: 8px;
             font-size: 1.5rem;
+            text-align: center;
+            padding: 5px;
         }
     </style>
     <title>Login</title>
