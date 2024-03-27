@@ -1,0 +1,10 @@
+.CB {
+    border-radius: 10px;
+}
+
+.loginform {
+    text-align: right;
+    background-color: blue;
+    text-align: center;
+    border: 3px;
+}
