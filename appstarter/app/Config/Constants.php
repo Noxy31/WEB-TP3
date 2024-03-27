@@ -98,3 +98,6 @@ define("APP_ADMIN_LOGIN", 'administrator');
 
 /* Meme chose pour le mdp */
 define('APP_ADMIN_PASSWORD', 'admin');
+
+define('URL','http://localhost:8080/');
+define('CSS',URL.'public/assets/');
