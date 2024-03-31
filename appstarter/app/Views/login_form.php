@@ -1,4 +1,4 @@
-<h1>Bibliotheca 3301</h1>
+<h1>Liber Primus</h1>
 <form class="loginform" method="POST" action="/login">
     <label for="login">Matricule / Identifiant</label>
     <input class="input1" id="login" name="login" type="text" />

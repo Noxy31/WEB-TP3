@@ -1,16 +1,17 @@
 /* login_form */
 @font-face {
-    font-family: 'Jellee';
-    src: url('D:/DEV WEB - TP3/WEB-TP3/appstarter/public/assets/Jellee-Bold.otf') format('otf');
-}
+    font-family: 'Chomsky';
+    src: url('fonts/Birds of Paradise.ttf');
+    src: url('fonts/Birds of Paradise.ttf') format('ttf'), 
 
+}
 html,
 body {
-    font-family: 'Jellee', sans-serif;
+    font-family:"Chomsky", sans-serif;
     background-image: url('3301.png');
-    background-repeat: no-repeat; /* Assurez-vous que l'image de fond ne se répète pas */
-    background-size: cover; /* Redimensionne l'image pour qu'elle couvre entièrement l'élément */
-    background-position: center; /* Centre l'image dans l'élément */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -19,10 +20,10 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 6rem;
     font-weight: 5px;
     color: #fffff0;
-    margin-top: 10vh;
+    margin-top: 2vh;
     padding-right: 1vw;
 }
 
@@ -32,8 +33,8 @@ h1 {
     height: 50px;
     margin-top: 2vh;
     transition: .3s ease-in;
-    font-family: 'Jellee', sans-serif;
-    font-size: 1.25rem;
+    font-family:"Chomsky", Arial, sans-serif;
+    font-size: 2rem;
 
 }
 
@@ -44,10 +45,10 @@ h1 {
 }
 
 .loginform {
-    padding-top: 55vh;
+    padding-top: 44vh;
     text-align: center;
     color: #fffff0;
-    font-size: 1rem;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,3 +66,5 @@ h1 {
 }
 
 /* End Login Form */
+
+/*Start home */
