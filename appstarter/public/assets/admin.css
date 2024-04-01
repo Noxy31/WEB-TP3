@@ -1,0 +1,57 @@
+/*Start home */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.h1admin {
+    font-size: 2rem;
+
+}
+
+#sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 15vw;
+    padding: 20px;
+    height: 100vh;
+    text-align: center;
+}
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 80px;
+}
+#sidebar ul li {
+    margin-bottom: 50px;
+    border: 2px;
+    font-size: 1.25rem;
+}
+#sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: 1px solid #fff;
+    margin: 5px;
+}
+#sidebar ul li a:hover {
+    background-color: #555;
+}
+#content {
+    padding: 20px;
+    text-align: center; /* Centrer le contenu horizontalement */
+}
+
+#content h1 {
+    font-size: 2rem;
+    text-align: center; /* Centrer le titre horizontalement */
+}
+
+#content p {
+    font-size: 1rem;
+}

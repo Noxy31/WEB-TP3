@@ -24,7 +24,7 @@ class Connection extends BaseController
         ) {
             return redirect()->to('/home');
         } else {
-            return "On a pas réussi à se connecter !";
+            return "Identifiants invalide. Merci de réessayer.";
         }
     }
 }

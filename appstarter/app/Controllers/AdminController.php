@@ -7,6 +7,10 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        return view('admin_home.php');
+        $template =
+            view('templates/adminHeader.php') .
+            view('admin_home.php') .
+            view('templates/footer.php');
+        return $template;
     }
 }

@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
+<div id="sidebar">
+    <h1 class="h1admin"> Admin Panel </h1>
+    <ul>
+        <li class="btn"><a href="#">Gestion des abonnés</a></li>
+        <li><a href="#">Gestion des livres</a></li>
+        <li><a href="#">Gestion des exemplaires</a></li>
+        <li><a href="#">Gestion des emprunts</a></li>
+        <li><a href="#">Gestion des retours</a></li>
+        <li><a href="#">Gestion des demandes</a></li>
+    </ul>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-initial-scale=1.0">
-    <title>Library's Administrator Dashboard</title>
-</head>
-
-<body>
-    <h1> This a test made for testing the sake of testism ! </h1>
-</body>
-
-</html>
+<div id="content">
+    <h1>Bibliotheca Liber Primus</h1>
+    <p>3301</p>
+</div>
