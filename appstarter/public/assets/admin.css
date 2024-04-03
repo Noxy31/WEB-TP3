@@ -6,11 +6,22 @@
 
 }
 
+html,
 body {
-    font-family: 'Stone';
+    font-family: 'Pop1';
+    background-image: url('8.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .h1admin {
