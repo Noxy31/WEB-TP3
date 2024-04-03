@@ -1,41 +1,70 @@
 /* login_form */
 @font-face {
-    font-family: 'Chomsky';
-    src: url('fonts/Birds of Paradise.ttf');
-    src: url('fonts/Birds of Paradise.ttf') format('ttf'), 
+    font-family: 'Pop1';
+    src: url('fonts/Poppins-Regular.ttf');
+    src: url('fonts/Poppins-Regular.ttf') format('ttf'), 
+
+}
+
+@font-face {
+    font-family: 'Pop1';
+    src: url('fonts/Poppins-Regular.ttf');
+    src: url('fonts/Poppins-Regular.ttf') format('ttf'), 
 
 }
 html,
 body {
-    font-family:"Chomsky", sans-serif;
-    background-image: url('3301.png');
+    font-family: Poppins;
+    background-image: url('80978.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
     overflow: auto;
+    display: flex; /* Utilisez flexbox pour centrer les éléments verticalement */
+    justify-content: center; /* Centrez les éléments horizontalement */
+    align-items: center; /* Centrez les éléments verticalement */
+
+}
+
+.wrapper {
+    position: relative;
+    width: 30vw;
+    height: 50vh;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(20px);
 }
 
 h1 {
     text-align: center;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: 5px;
     color: #fffff0;
-    margin-top: 2vh;
-    padding-right: 1vw;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 5px;
+    color: #fffff0;
 }
 
 .CB {
     border-radius: 10px;
     width: 200px;
     height: 50px;
-    margin-top: 2vh;
     transition: .3s ease-in;
-    font-family:"Chomsky", Arial, sans-serif;
-    font-size: 2rem;
-
+    font-family: Poppins;
+    font-size: 1.5rem;
+    margin-top: 5vh;
 }
 
 .CB:hover {
@@ -45,14 +74,12 @@ h1 {
 }
 
 .loginform {
-    padding-top: 44vh;
     text-align: center;
     color: #fffff0;
     font-size: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-right: 1vw;
 }
 
 .input1,
@@ -61,8 +88,9 @@ h1 {
     width: 300px;
     height: 20px;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
 }
+
 
 /* End Login Form */

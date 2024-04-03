@@ -20,9 +20,9 @@ body {
 
 #sidebar {
     background: #733b02;
-    background: linear-gradient(91deg, #733b02 0%, #371b01 70%);
-    background: -webkit-linear-gradient(91deg, #733b02 0%, #371b01 70%);
-    background: -moz-linear-gradient(91deg, #733b02 0%, #371b01 70%);
+    background: linear-gradient(91deg,#733b02 0%, #201000 50%);
+    background: -webkit-linear-gradient(91deg,#733b02 0%, #201000 50%);
+    background: -moz-linear-gradient(91deg,#733b02 0%, #201000 50%);
     color: #fff;
     width: 16vw;
     padding: 20px;
