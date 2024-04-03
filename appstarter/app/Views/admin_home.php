@@ -1,5 +1,4 @@
-<div id="sidebar">
-    <h1 class="h1admin"> Admin Panel </h1>
+<div id="topbar">
     <ul>
         <li class="btn"><a href="#">Gestion des abonnés</a></li>
         <li><a href="#">Gestion des livres</a></li>
@@ -11,6 +10,6 @@
 </div>
 
 <div id="content">
-    <h1>Bibliotheca Liber Primus</h1>
-    <p>3301</p>
+    <h1></h1>
+    <p></p>
 </div>
