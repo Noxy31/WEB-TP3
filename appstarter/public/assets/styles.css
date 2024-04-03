@@ -7,15 +7,15 @@
 }
 
 @font-face {
-    font-family: 'Pop1';
-    src: url('fonts/Poppins-Regular.ttf');
-    src: url('fonts/Poppins-Regular.ttf') format('ttf'), 
+    font-family: 'PopBold';
+    src: url('fonts/Poppins-Bold.ttf');
+    src: url('fonts/Poppins-Bold.ttf') format('ttf'), 
 
 }
 html,
 body {
-    font-family: Poppins;
-    background-image: url('80978.jpg');
+    font-family: 'Pop1';
+    background-image: url('8.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,16 +24,16 @@ body {
     height: 100%;
     width: 100%;
     overflow: auto;
-    display: flex; /* Utilisez flexbox pour centrer les éléments verticalement */
-    justify-content: center; /* Centrez les éléments horizontalement */
-    align-items: center; /* Centrez les éléments verticalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .wrapper {
     position: relative;
     width: 30vw;
-    height: 50vh;
+    height: 60vh;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -43,18 +43,12 @@ body {
     backdrop-filter: blur(20px);
 }
 
-h1 {
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 5px;
-    color: #fffff0;
-}
-
 h2 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 5px;
-    color: #fffff0;
+    color: #ffffff;
+    font-family: 'PopBold';
 }
 
 .CB {
@@ -62,34 +56,49 @@ h2 {
     width: 200px;
     height: 50px;
     transition: .3s ease-in;
-    font-family: Poppins;
-    font-size: 1.5rem;
+    font-family: 'Pop1';
+    font-size: 1.25rem;
     margin-top: 5vh;
+    border: none;
+    background: transparent;
+    color: #ffffff;
 }
 
 .CB:hover {
-    box-shadow: inset 0 0 5px #35320b, inset 0 0 25px #45410f, inset 0 0 50px #575213, inset 0 0 200px #6e6818;
+    box-shadow: inset 0 0 5px #fcfcfc;
     color: white;
 
 }
 
 .loginform {
     text-align: center;
-    color: #fffff0;
-    font-size: 2rem;
+    color: #ffffff;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.label2 {
+    margin-top: 20px;
+}
+
 .input1,
 .input2 {
-    margin-bottom: 10px;
     width: 300px;
     height: 20px;
-    border-radius: 8px;
     font-size: 1.5rem;
-    text-align: center;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.icon img {
+    height: 30px;
+    width: auto;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(152deg) brightness(103%) contrast(103%);
 }
 
 
