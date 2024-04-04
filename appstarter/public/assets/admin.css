@@ -13,6 +13,13 @@
 
 }
 
+@font-face {
+    font-family: 'Atmo';
+    src: url('fonts/aAtmospheric.otf');
+    src: url('fonts/aAtmospheric.ttf') format('ttf'), 
+
+}
+
 html,
 body {
     font-family: 'PopBold';
@@ -31,11 +38,6 @@ body {
 
 }
 
-.h1admin {
-    font-size: 2.5rem;
-
-}
-
 #topbar {
     background: transparent;
     backdrop-filter: blur(20px);
@@ -49,13 +51,16 @@ body {
     z-index: 1000;
     box-shadow: 2px;
     left: 5vw;
+    border-bottom: 2px solid rgba(255, 255, 255, .5);
+    border-left: 2px solid rgba(255, 255, 255, .5);
+    border-right: 2px solid rgba(255, 255, 255, .5);
 }
 
 #topbar ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-around; 
 }
 
 #topbar ul li {
@@ -81,16 +86,29 @@ body {
 }
 
 #content {
-    padding: 20px;
     text-align: center;
-    margin-left: 20vw;
 }
 
 #content h1 {
-    font-size: 3rem;
+    font-family: 'Atmo';
+    font-size: 5rem;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    color:#ffffff;
+    text-shadow: 0 0 5px #485ec1,0 0 10px #6982cc,0 0 15px #677ea2,0 0 20px #63aefe,0 0 35px #add5ff,0 0 40px #cee6ff;
 }
 
 #content p {
     font-size: 1.5rem;
+}
+
+.h1Cont {
+    background: transparent;
+    border: none;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-bottom-left-radius: 60px;
+    border-top-right-radius: 60px;
+    backdrop-filter: blur(20px);
+    width: 60vw;
 }

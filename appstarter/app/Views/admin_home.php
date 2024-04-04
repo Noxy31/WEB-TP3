@@ -8,8 +8,9 @@
         <li><a href="#">Gestion des demandes</a></li>
     </ul>
 </div>
-
 <div id="content">
-    <h1></h1>
+    <div class="h1Cont">
+        <h1 class="name"> Bibliotheca Liber Primus</h1>
+    </div>
     <p></p>
 </div>
