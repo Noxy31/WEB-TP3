@@ -2,21 +2,45 @@
 @font-face {
     font-family: 'Pop1';
     src: url('fonts/Poppins-Regular.ttf');
-    src: url('fonts/Poppins-Regular.ttf') format('ttf'), 
+    src: url('fonts/Poppins-Regular.ttf') format('ttf'),
 
 }
 
 @font-face {
     font-family: 'PopBold';
     src: url('fonts/Poppins-Bold.ttf');
-    src: url('fonts/Poppins-Bold.ttf') format('ttf'), 
+    src: url('fonts/Poppins-Bold.ttf') format('ttf'),
 
 }
 
 @font-face {
     font-family: 'Atmo';
     src: url('fonts/aAtmospheric.otf');
-    src: url('fonts/aAtmospheric.ttf') format('ttf'), 
+    src: url('fonts/aAtmospheric.ttf') format('ttf'),
+
+}
+
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
 }
 
@@ -36,6 +60,11 @@ body {
     justify-content: center;
     align-items: center;
 
+}
+
+body.fadeIn {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
 
 #topbar {
@@ -60,7 +89,7 @@ body {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
 }
 
 #topbar ul li {
@@ -95,8 +124,8 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
-    color:#ffffff;
-    text-shadow: 0 0 5px #485ec1,0 0 10px #6982cc,0 0 15px #677ea2,0 0 20px #63aefe,0 0 35px #add5ff,0 0 40px #cee6ff;
+    color: #ffffff;
+    text-shadow: 0 0 5px #485ec1, 0 0 10px #6982cc, 0 0 15px #677ea2, 0 0 20px #63aefe, 0 0 35px #add5ff, 0 0 40px #cee6ff;
 }
 
 #content p {
@@ -111,4 +140,15 @@ body {
     border-top-right-radius: 60px;
     backdrop-filter: blur(20px);
     width: 60vw;
+}
+
+span {
+    opacity: 0;
+    transition: all 3s ease;
+}
+
+span.fade {
+    opacity: 1;
+    color: #efe2e2;
+    text-shadow: 4px 6px 4px #140718;
 }

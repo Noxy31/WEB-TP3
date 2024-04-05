@@ -100,4 +100,5 @@ define("APP_ADMIN_LOGIN", 'administrator');
 define('APP_ADMIN_PASSWORD', 'admin');
 
 define('URL','http://localhost:8080/');
+
 define('CSS',URL.'public/assets/');
