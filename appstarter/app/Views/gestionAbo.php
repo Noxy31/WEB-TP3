@@ -10,7 +10,7 @@
 </div>
 <div id="content">
     <div class="h1Cont">
-        <h1 class="name"> Bibliotheca Liber Primus</h1>
+        
     </div>
     <p></p>
 </div>

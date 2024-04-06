@@ -9,3 +9,4 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Connection::index');
 $routes->post('/login', 'Connection::attemptLogin');
 $routes->get('/home', 'AdminController::index');
+$routes->get('/gestion_abonnés', 'GestionAbo::index');

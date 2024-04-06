@@ -120,28 +120,8 @@ body {
     text-align: center;
 }
 
-#content h1 {
-    font-family: 'Atmo';
-    font-size: 5rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    text-shadow: 0 0 5px #485ec1, 0 0 10px #6982cc, 0 0 15px #677ea2, 0 0 20px #63aefe, 0 0 35px #add5ff, 0 0 40px #cee6ff;
-}
-
 #content p {
     font-size: 1.5rem;
-}
-
-.h1Cont {
-    background: transparent;
-    border: none;
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-bottom-left-radius: 60px;
-    border-top-right-radius: 60px;
-    backdrop-filter: blur(20px);
-    width: 60vw;
 }
 
 span {

@@ -12,6 +12,20 @@
     src: url('fonts/Poppins-Bold.ttf') format('ttf'), 
 
 }
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
 html,
 body {
     font-family: 'Pop1';
@@ -28,6 +42,12 @@ body {
     justify-content: center;
     align-items: center;
 
+}
+
+body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .wrapper {
