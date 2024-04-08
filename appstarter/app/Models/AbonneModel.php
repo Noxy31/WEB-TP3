@@ -15,5 +15,11 @@ class AbonneModel extends Model {
         'telephone_abonne',
         'CSP_abonne'
     ];
+
+
+
+    public function getAbonnes() {
+        return $this->findAll();
+    }
 }
 

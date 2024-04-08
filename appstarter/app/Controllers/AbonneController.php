@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 
-class GestionAbo extends BaseController
+class AbonneController extends BaseController
 {
     public function index()
     {
     $gestionAboModel = model(\App\Models\AbonneModel::class);
-    var_dump($gestionAboModel);
-    $gestionAboModel->select();
+
+    $abonnes = $gestionAboModel->getAbonnes();
+    var_dump($abonnes);
         $template =
             view('templates/gestionHeader.php') .
             view('gestionAbo.php') .
