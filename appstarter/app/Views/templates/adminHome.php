@@ -8,3 +8,4 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/admin.css');?>"/>
     <script src="<?php echo base_url('assets/JS/Scripts.js');?>"></script>
 </head>
+<body>
