@@ -1,4 +1,4 @@
-/*Start home */
+/*Start gestion */
 @font-face {
     font-family: 'Pop1';
     src: url('fonts/Poppins-Regular.ttf');
@@ -64,7 +64,7 @@ body {
 }
 
 body {
-    animation: fadeInAnimation ease 3s;
+    animation: fadeInAnimation ease 1.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -85,6 +85,7 @@ body {
     border-bottom: 2px solid rgba(255, 255, 255, .5);
     border-left: 2px solid rgba(255, 255, 255, .5);
     border-right: 2px solid rgba(255, 255, 255, .5);
+    margin-bottom: 100px;
 }
 
 #topbar ul {
@@ -124,13 +125,64 @@ body {
     font-size: 1.5rem;
 }
 
-span {
-    opacity: 0;
-    transition: all 3s ease;
+.container {
+    background: transparent;
+    border: none;
+    border: 3px solid rgba(255, 255, 255, .5);
+    border-radius: 60px;
+    backdrop-filter: blur(30px);
+    width: 70vw;
+    max-height: 65vh;
+    padding: 20px;
+    overflow-y: scroll;
+    margin-bottom: none;
+    height: 60%;
 }
 
-span.fade {
-    opacity: 1;
-    color: #efe2e2;
-    text-shadow: 4px 6px 4px #140718;
+.container::-webkit-scrollbar {
+
+    width: 10px; /* Largeur de la barre de défilement */
+    height: 200px; /* Hauteur maximale de la barre de défilement */
+    min-height: 100px; /* Hauteur minimale de la barre de défilement */
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5); /* Couleur du bouton de la barre de défilement */
+    border-radius: 10px; /* Bord arrondi */
+    margin-top: 20px; /* Décalage vers le bas */
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7); /* Couleur du bouton de la barre de défilement au survol */
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+}
+
+table {
+    color: white;
+    margin: 40px;
+    font-size: 1.25rem;
+    border-collapse: collapse;
+
+}
+
+thead {
+    text-align: center;
+}
+
+th {
+    padding: 12px;
+    text-align: center;
+    border: 2px solid white;
+    font-size: 1.5rem;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border: 2px solid white;
+    font-size: 1rem;
 }

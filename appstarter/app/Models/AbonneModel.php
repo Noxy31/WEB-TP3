@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AbonneModel extends Model {
+class AbonneModel extends Model
+{
     protected $DBGroup = 'default';
     protected $table = 'abonne';
     protected $primaryKey = 'matricule_abonne';
@@ -18,8 +20,13 @@ class AbonneModel extends Model {
 
 
 
-    public function getAbonnes() {
+    public function getAbonnes()
+    {
         return $this->findAll();
     }
-}
 
+    public function updateAbonne($matricule_abonne, $data)
+    {
+        return $this->update($matricule_abonne, $data);
+    }
+}
