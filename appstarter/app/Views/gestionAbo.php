@@ -10,7 +10,34 @@
 </div>
 <div id="content">
     <div class="h1Cont">
-        
+        <h1>Gestion des abonnés</h1>
     </div>
-    <p></p>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Matricule</th>
+                    <th>Nom</th>
+                    <th>Date de naissance</th>
+                    <th>Date d'adhésion</th>
+                    <th>Adresse</th>
+                    <th>Téléphone</th>
+                    <th>CSP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($abonnes as $abonne) : ?>
+                    <tr>
+                        <td><?php echo $abonne['matricule_abonne']; ?></td>
+                        <td><?php echo $abonne['nom_abonne']; ?></td>
+                        <td><?php echo $abonne['date_naissance_abonne']; ?></td>
+                        <td><?php echo $abonne['date_adhesion_abonne']; ?></td>
+                        <td><?php echo $abonne['adresse_abonne']; ?></td>
+                        <td><?php echo $abonne['telephone_abonne']; ?></td>
+                        <td><?php echo $abonne['CSP_abonne']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
