@@ -8,7 +8,7 @@ class AbonneController extends BaseController
     {
         $gestionAboModel = model(\App\Models\AbonneModel::class);
         $abonnes = $gestionAboModel->getAbonnes();
-        $data['abonnes'] = $abonnes; // Passer les abonnés à la vue
+        $data['abonnes'] = $abonnes; // On passe les abonnés sur la vue
         //var_dump($abonnes);
         $template =
             view('templates/gestionHeader.php') .
@@ -17,7 +17,7 @@ class AbonneController extends BaseController
         return $template;
     }
 
-    public function detail($matricule_abonne)
+    public function detail($matricule_abonne) // Fonction pour récupérer le matricule des abonnés et afficher leurs infos
     {
         $abonneModel = model(\App\Models\AbonneModel::class);
         $abonne = $abonneModel->find($matricule_abonne);
