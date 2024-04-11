@@ -36,7 +36,7 @@
                 <label for="csp">CSP :</label>
                 <input type="text" id="csp" name="csp" value="<?php echo $abonne['CSP_abonne']; ?>"><br>
 
-                <input type="submit" value="Modifier">
+                <input class="bouton" type="submit" value="Modifier">
             </form>
         </div>
     </div>

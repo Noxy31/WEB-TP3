@@ -141,19 +141,19 @@ body {
 
 .container::-webkit-scrollbar {
 
-    width: 10px; /* Largeur de la barre de défilement */
-    height: 200px; /* Hauteur maximale de la barre de défilement */
-    min-height: 100px; /* Hauteur minimale de la barre de défilement */
+    width: 10px;
+    height: 200px;
+    min-height: 100px;
 }
 
 .container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5); /* Couleur du bouton de la barre de défilement */
-    border-radius: 10px; /* Bord arrondi */
-    margin-top: 20px; /* Décalage vers le bas */
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 .container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.7); /* Couleur du bouton de la barre de défilement au survol */
+    background: rgba(255, 255, 255, 0.7);
 }
 
 h1 {
@@ -185,4 +185,21 @@ td {
     text-align: center;
     border: 2px solid white;
     font-size: 1rem;
+}
+
+form{
+    font-size: 1.5rem;
+    
+}
+
+input{
+    font-size: 1rem;
+
+}
+
+.bouton {
+    border-radius: 8px;
+    font-family: 'PopBold';
+    margin-top: 15px;
+    padding: 10px;
 }
