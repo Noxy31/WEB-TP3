@@ -29,6 +29,24 @@ class AbonneController extends BaseController
         return $template;
     }
 
+    public function add() // Fonction pour ajouter un abonné 
+    {
+        $abonneModel = model(\App\Models\AbonneModel::class);
+
+        $data = [
+            'nom_abonne' => $this->request->getPost('nom'),
+            'date_naissance_abonne' => $this->request->getPost('date_naissance'),
+            'date_adhesion_abonne' => $this->request->getPost('date_adhesion'),
+            'adresse_abonne' => $this->request->getPost('adresse'),
+            'telephone_abonne' => $this->request->getPost('telephone'),
+            'CSP_abonne' => $this->request->getPost('csp'),
+        ];
+
+        $abonneModel->insert($data);
+
+        return redirect()->to(base_url('/gestion_abonnés'));
+    }
+
     public function update($matricule_abonne) // Fonction pour mettre a jour les infos des abonnés
     {
         $abonneModel = model(\App\Models\AbonneModel::class);

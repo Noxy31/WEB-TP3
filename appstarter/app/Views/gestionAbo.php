@@ -14,6 +14,37 @@
             <h1>Gestion des abonnés</h1>
         </div>
         <div>
+            <button class="bouton" id="btnAddAbonne">Ajouter un abonné</button>
+            <script>
+                document.getElementById('btnAddAbonne').addEventListener('click', function() { // Fonction pour faire apparaitre le formulaire d'ajout
+                    document.getElementById('formAddAbonne').style.display = 'block';
+                });
+            </script>
+            <div id="formAddAbonne" style="display: none;">
+                <form action="<?= base_url('/abonne/add') ?>" method="post">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom"><br>
+
+                    <label for="date_naissance">Date de naissance :</label>
+                    <input type="text" id="date_naissance" name="date_naissance"><br>
+
+                    <label for="date_adhesion">Date d'adhésion :</label>
+                    <input type="text" id="date_adhesion" name="date_adhesion"><br>
+
+                    <label for="adresse">Adresse :</label>
+                    <input type="text" id="adresse" name="adresse"><br>
+
+                    <label for="telephone">Téléphone :</label>
+                    <input type="text" id="telephone" name="telephone"><br>
+
+                    <label for="csp">CSP :</label>
+                    <input type="text" id="csp" name="csp"><br>
+
+                    <input type="submit" value="Ajouter">
+                </form>
+            </div>
+        </div>
+        <div>
             <table>
                 <thead>
                     <tr>
@@ -29,7 +60,7 @@
                 <tbody>
                     <?php foreach ($abonnes as $abonne) : ?>
                         <tr>
-                            <td><a href="<?php echo base_url('/abonne/detail/'.$abonne['matricule_abonne']); ?>"><?php echo $abonne['matricule_abonne']; ?></a></td>
+                            <td><a href="<?php echo base_url('/abonne/detail/' . $abonne['matricule_abonne']); ?>"><?php echo $abonne['matricule_abonne']; ?></a></td>
                             <td><?php echo $abonne['nom_abonne']; ?></td>
                             <td><?php echo $abonne['date_naissance_abonne']; ?></td>
                             <td><?php echo $abonne['date_adhesion_abonne']; ?></td>
@@ -42,4 +73,7 @@
             </table>
         </div>
     </div>
+
+</div>
+
 </div>

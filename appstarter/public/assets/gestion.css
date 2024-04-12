@@ -137,6 +137,9 @@ body {
     overflow-y: scroll;
     margin-bottom: none;
     height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container::-webkit-scrollbar {
@@ -202,4 +205,10 @@ input{
     font-family: 'PopBold';
     margin-top: 15px;
     padding: 10px;
+}
+
+.buttonAjout {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
