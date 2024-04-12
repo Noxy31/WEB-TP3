@@ -18,6 +18,7 @@
             <script>
                 document.getElementById('btnAddAbonne').addEventListener('click', function() { // Fonction pour faire apparaitre le formulaire d'ajout
                     document.getElementById('formAddAbonne').style.display = 'block';
+                    this.style.display = 'none';
                 });
             </script>
             <div id="formAddAbonne" style="display: none;">
@@ -25,10 +26,10 @@
                     <label for="nom">Nom :</label>
                     <input type="text" id="nom" name="nom"><br>
 
-                    <label for="date_naissance">Date de naissance :</label>
+                    <label for="date_naissance">Date de naissance (YYYY-MM-DD) :</label>
                     <input type="text" id="date_naissance" name="date_naissance"><br>
 
-                    <label for="date_adhesion">Date d'adhésion :</label>
+                    <label for="date_adhesion">Date d'adhésion (YYYY-MM-DD) :</label>
                     <input type="text" id="date_adhesion" name="date_adhesion"><br>
 
                     <label for="adresse">Adresse :</label>
@@ -40,7 +41,7 @@
                     <label for="csp">CSP :</label>
                     <input type="text" id="csp" name="csp"><br>
 
-                    <input type="submit" value="Ajouter">
+                    <input class="bouton" type="submit" value="Valider">
                 </form>
             </div>
         </div>

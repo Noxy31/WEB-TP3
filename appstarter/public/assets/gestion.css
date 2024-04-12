@@ -130,7 +130,7 @@ body {
     border: none;
     border: 3px solid rgba(255, 255, 255, .5);
     border-radius: 60px;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(60px);
     width: 70vw;
     max-height: 65vh;
     padding: 20px;
