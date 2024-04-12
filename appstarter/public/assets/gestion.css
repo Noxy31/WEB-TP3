@@ -160,14 +160,14 @@ body {
 }
 
 h1 {
-    color: white;
+    color: #ffffff;
     font-size: 3rem;
 }
 
 table {
-    color: white;
+    color: #ffffff;
     margin: 40px;
-    font-size: 1.25rem;
+    font-size: 1.50rem;
     border-collapse: collapse;
 
 }
@@ -179,15 +179,15 @@ thead {
 th {
     padding: 12px;
     text-align: center;
-    border: 2px solid white;
+    border: 2px solid #121212;
     font-size: 1.5rem;
 }
 
 td {
     padding: 12px;
     text-align: center;
-    border: 2px solid white;
-    font-size: 1rem;
+    border: 2px solid #121212;
+    font-size: 1.25rem;
 }
 
 form{
