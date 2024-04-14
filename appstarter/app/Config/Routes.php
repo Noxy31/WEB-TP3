@@ -14,4 +14,4 @@ $routes->get('/abonne/detail/(:any)', 'AbonneController::detail/$1'); // Get pou
 $routes->post('/abonne/update/(:num)', 'AbonneController::update/$1'); // Post pour mettre a jour les infos des abonnés
 $routes->post('/abonne/add', 'AbonneController::add'); // Post pour update la DBB et ajouter un abonné
 $routes->get('/gestion_livres','LivresController::index'); // Get pour avoir la page de gestion des livres
-$routes->post('/livre/add', 'LivresController::add'); // Post pour ajouter un livre
+$routes->post('/livres/add', 'LivresController::add'); // Post pour ajouter un livre

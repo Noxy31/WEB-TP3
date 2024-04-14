@@ -21,7 +21,7 @@
                     this.style.display = 'none';
                 });
             </script>
-            <div id="formAddLivre" style="display: none;">
+            <div id="formAddLivres" style="display: none;">
                 <form action="<?= base_url('/livres/add') ?>" method="post">
                     <label for="titreLivres">Titre :</label>
                     <input type="text" id="titreLivre" name="titreLivre"><br>

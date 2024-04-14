@@ -33,9 +33,7 @@ class LivresModel extends Model
         $associeModel = new AssocieModel();
         $motcleModel = new MotcleModel();
 
-
         $auteurId = $auteurModel->getOrCreateAuteur($auteur);
-
 
         $data = [
             'titre_livre' => $titreLivre,

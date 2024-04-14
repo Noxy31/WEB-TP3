@@ -35,7 +35,7 @@ class LivresController extends BaseController
     }
 
     public function add() {   
-    $livresModel = new LivresModel();
+    $livresModel = new \App\Models\LivresModel();
 
     $titreLivre = $this->request->getPost('titreLivre');
     $auteur = $this->request->getPost('auteur');
