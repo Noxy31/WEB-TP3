@@ -6,14 +6,44 @@ class LivresController extends BaseController
 {
     public function index()
     {
-        //$gestionLivresModel = model(\App\Models\LivresModel::class);
-        // $livres = $gestionLivresModel->getLivres();
-        // $data['lives'] = $livres; // On passe les livres sur la vue
-        //var_dump($livres);
+        $gestionLivresModel = new \App\Models\LivresModel();
+        $gestionAuteurModel = new \App\Models\AuteurModel();
+        $gestionMotcleModel = new \App\Models\MotcleModel();
+        $gestionEcritModel = new \App\Models\EcritModel();
+        $gestionAssocieModel = new \App\Models\AssocieModel();
+
+        $livres = $gestionLivresModel->getLivres();
+        $auteurs = $gestionAuteurModel->getAuteur();
+        $motcle = $gestionMotcleModel->getMotcle();
+        $ecrits = $gestionEcritModel->findAll();
+        $associe = $gestionAssocieModel->findAll();
+
+        $data = [
+            'livres' => $livres,
+            'auteurs' => $auteurs,
+            'motcle' => $motcle,
+            'ecrits' => $ecrits,
+            'associe' => $associe,
+            ];
+
         $template =
             view('templates/gestionHeader.php') .
-            view('gestionLivres.php') .
+            view('gestionLivres.php', $data) .
             view('templates/footer.php');
+
         return $template;
+    }
+
+    public function add() {   
+    $livresModel = new LivresModel();
+
+    $titreLivre = $this->request->getPost('titreLivre');
+    $auteur = $this->request->getPost('auteur');
+    $themeLivre = $this->request->getPost('themeLivre');
+    $motCle = $this->request->getPost('motcle');
+
+    $livreId = $livresModel->addLivre($titreLivre, $auteur, $themeLivre, $motCle);
+
+    return redirect()->to(base_url('/livres'));
     }
 }

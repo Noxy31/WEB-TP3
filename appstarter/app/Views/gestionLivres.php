@@ -21,25 +21,19 @@
                     this.style.display = 'none';
                 });
             </script>
-            <div id="formAddLivres" style="display: none;">
+            <div id="formAddLivre" style="display: none;">
                 <form action="<?= base_url('/livres/add') ?>" method="post">
-                    <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom"><br>
+                    <label for="titreLivres">Titre :</label>
+                    <input type="text" id="titreLivre" name="titreLivre"><br>
 
-                    <label for="date_naissance">Date de naissance (YYYY-MM-DD) :</label>
-                    <input type="text" id="date_naissance" name="date_naissance"><br>
+                    <label for="auteur">Auteur :</label>
+                    <input type="text" id="auteur" name="auteur"><br>
 
-                    <label for="date_adhesion">Date d'adhésion (YYYY-MM-DD) :</label>
-                    <input type="text" id="date_adhesion" name="date_adhesion"><br>
+                    <label for="themeLivre">Thèmes :</label>
+                    <input type="text" id="themeLivre" name="themeLivre"><br>
 
-                    <label for="adresse">Adresse :</label>
-                    <input type="text" id="adresse" name="adresse"><br>
-
-                    <label for="telephone">Téléphone :</label>
-                    <input type="text" id="telephone" name="telephone"><br>
-
-                    <label for="csp">CSP :</label>
-                    <input type="text" id="csp" name="csp"><br>
+                    <label for="motcle">Mots-Clé :</label>
+                    <input type="text" id="motcle" name="motcle"><br>
 
                     <input class="bouton" type="submit" value="Valider">
                 </form>
@@ -53,10 +47,30 @@
                         <th>Titre</th>
                         <th>Auteur</th>
                         <th>Thèmes</th>
+                        <th>Mots Clé</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <?php foreach ($livres as $livre) : ?>
+                        <tr>
+                            <td><?= $livre['code_catalogue'] ?></td>
+                            <td><?= $livre['titre_livre'] ?></td>
+                            <td><?= $livre['nom_auteur'] ?></td>
+                            <td><?= $livre['theme_livre'] ?></td>
+                            <td>
+                                <?php
+                                $motsCleArray = explode(',', $livre['mots_cle']);
+                                $lastKey = count($motsCleArray) - 1;
+                                foreach ($motsCleArray as $key => $motCle) :
+                                    echo $motCle;
+                                    if ($key !== $lastKey) {
+                                        echo ', ';
+                                    }
+                                endforeach;
+                                ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
