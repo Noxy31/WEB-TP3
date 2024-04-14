@@ -44,6 +44,6 @@ class LivresController extends BaseController
 
     $livreId = $livresModel->addLivre($titreLivre, $auteur, $themeLivre, $motCle);
 
-    return redirect()->to(base_url('/livres'));
+    return redirect()->to(base_url('/gestion_livres'));
     }
 }

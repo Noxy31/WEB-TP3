@@ -17,4 +17,16 @@ class AuteurModel extends Model
     {
         return $this->findAll();
     }
+
+    public function getOrCreateAuteur($nomAuteur)
+    {
+        $auteur = $this->where('nom_auteur', $nomAuteur)->first();
+
+        if ($auteur) {
+            return $auteur['id_auteur']; // verifie si l'auteur existe deja
+        }
+
+        $this->insert(['nom_auteur' => $nomAuteur]); // le cree si il existe pas
+        return $this->insertID();
+    }
 }
