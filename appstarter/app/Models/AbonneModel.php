@@ -18,7 +18,9 @@ class AbonneModel extends Model
         'CSP_abonne'
     ];
 
-
+    public function getAbonneByMatricule($matricule) {
+        return $this->find($matricule);
+    }
 
     public function getAbonnes()
     {
