@@ -15,3 +15,5 @@ $routes->post('/abonne/update/(:num)', 'AbonneController::update/$1', ['filter' 
 $routes->post('/abonne/add', 'AbonneController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour update la DBB et ajouter un abonné
 $routes->get('/gestion_livres','LivresController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page de gestion des livres
 $routes->post('/livres/add', 'LivresController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un livre
+$routes->get('/gestion_exemplaires','ExemplaireController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page de gestion des exemplaires
+$routes->post('/exemplaires/add', 'ExemplaireController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un exemplaire

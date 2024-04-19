@@ -2,7 +2,7 @@
     <ul>
         <li class="btn"><a href="<?php echo base_url('/gestion_abonnés'); ?>">Gestion des abonnés</a></li>
         <li><a href="<?php echo base_url('/gestion_livres'); ?>">Gestion des livres</a></li>
-        <li><a href="#">Gestion des exemplaires</a></li>
+        <li><a href="<?php echo base_url('/gestion_exemplaires'); ?>">Gestion des exemplaires</a></li>
         <li><a href="#">Gestion des emprunts</a></li>
         <li><a href="#">Gestion des retours</a></li>
         <li><a href="#">Gestion des demandes</a></li>
@@ -13,11 +13,11 @@
         <div class="h1Cont">
             <h1>Gestion des abonnés</h1>
         </div>
-        <?php if (isset($message)): ?>
+        <?php if (isset($message)) : ?>
             <div id="message"><?= $message ?></div>
         <?php endif; ?>
         <div>
-            <form action="<?php echo base_url('/abonne/update/'.$abonne['matricule_abonne']); ?>" method="post">
+            <form action="<?php echo base_url('/abonne/update/' . $abonne['matricule_abonne']); ?>" method="post">
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom" value="<?php echo $abonne['nom_abonne']; ?>"><br>
 
