@@ -169,11 +169,26 @@ table {
     margin: 40px;
     font-size: 1.50rem;
     border-collapse: collapse;
-
 }
 
 thead {
     text-align: center;
+}
+
+.ligne-tableau:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #191a19;
+    transition: all 0.3s;
+}
+
+.ligne-tableau {
+    transition: transform 0.3s;
+}
+
+.ligne-tableau:not(:hover) {
+    transform: scale(1);
+    
 }
 
 th {

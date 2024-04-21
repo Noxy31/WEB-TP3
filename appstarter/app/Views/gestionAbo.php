@@ -67,8 +67,8 @@
                 </thead>
                 <tbody>
                     <?php foreach ($abonnes as $abonne) : ?>
-                        <tr>
-                            <td><a href="<?php echo base_url('/abonne/detail/' . $abonne['matricule_abonne']); ?>"><?php echo $abonne['matricule_abonne']; ?></a></td>
+                        <tr class="ligne-tableau" onclick="window.location='<?php echo base_url('/abonne/detail/' . $abonne['matricule_abonne']); ?>'">
+                            <td><?php echo $abonne['matricule_abonne']; ?></td>
                             <td><?php echo $abonne['nom_abonne']; ?></td>
                             <td><?php echo $abonne['date_naissance_abonne']; ?></td>
                             <td><?php echo $abonne['date_adhesion_abonne']; ?></td>
