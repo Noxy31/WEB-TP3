@@ -26,11 +26,11 @@
                     <label for="nom">Nom :</label>
                     <input type="text" id="nom" name="nom"><br>
 
-                    <label for="date_naissance">Date de naissance (YYYY-MM-DD) :</label>
-                    <input type="text" id="date_naissance" name="date_naissance"><br>
+                    <label for="date_naissance">Date de naissance :</label>
+                    <input type="date" id="date_naissance" name="date_naissance"><br>
 
-                    <label for="date_adhesion">Date d'adhésion (YYYY-MM-DD) :</label>
-                    <input type="text" id="date_adhesion" name="date_adhesion"><br>
+                    <label for="date_adhesion">Date d'adhésion :</label>
+                    <input type="date" id="date_adhesion" name="date_adhesion"><br>
 
                     <label for="adresse">Adresse :</label>
                     <input type="text" id="adresse" name="adresse"><br>
@@ -39,7 +39,14 @@
                     <input type="text" id="telephone" name="telephone"><br>
 
                     <label for="csp">CSP :</label>
-                    <input type="text" id="csp" name="csp"><br>
+                    <select id="csp" name="csp"><br>
+                        <option value="Employé">Employé</option>
+                        <option value="Cadre">Cadre</option>
+                        <option value="Ouvrier">Ouvrier</option>
+                        <option value="Retraité">Retraité</option>
+                        <option value="Etudiant">Etudiant</option>
+                        <option value="Artisan/Commercant/Chef d'entreprise">Artisan/Commercant/Chef d'entreprise</option>
+                    </select><br>
 
                     <input class="bouton" type="submit" value="Valider">
                 </form>
