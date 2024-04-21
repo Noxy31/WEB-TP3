@@ -26,11 +26,6 @@ class ExemplaireModel extends Model
         return $exemplaires;
     }
 
-    public function getLivres()
-    {
-        return $this->db->table('livre')->get()->getResultArray();
-    }
-
     public function addExemplaire($codeCatalogue, $nomEditeur, $codeUsure, $dateAcquisition, $emplacementRayon)
     {
         return $this->insert([

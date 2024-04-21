@@ -26,7 +26,6 @@ class ExemplaireController extends BaseController
 
     public function add() {   
         $exemplaireModel = new \App\Models\ExemplaireModel();
-        $livresModel = new \App\Models\LivresModel();
 
         $codeCatalogue = $this->request->getPost('codeCatalogue');
         $nomEditeur = $this->request->getPost('nomEditeur');
