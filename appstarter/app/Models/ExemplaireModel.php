@@ -19,7 +19,7 @@ class ExemplaireModel extends Model
 
     public function getExemplaire()
     {
-        $exemplaires = $this->select('exemplaire.cote_exemplaire, livre.titre_livre, livre.code_catalogue, exemplaire.nom_editeur, exemplaire.code_usure, exemplaire.date_acquisition, exemplaire.emplacement_rayon')
+        $exemplaires = $this->select('exemplaire.cote_exemplaire, livre.titre_livre, exemplaire.nom_editeur, exemplaire.code_usure, exemplaire.date_acquisition, exemplaire.emplacement_rayon')
             ->join('livre', 'livre.code_catalogue = exemplaire.code_catalogue')
             ->findAll();
 
