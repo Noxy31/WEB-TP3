@@ -78,14 +78,12 @@ body {
     width: 90vw;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 5vw;
     z-index: 1000;
     box-shadow: 2px;
-    left: 5vw;
     border-bottom: 2px solid rgba(255, 255, 255, .5);
     border-left: 2px solid rgba(255, 255, 255, .5);
     border-right: 2px solid rgba(255, 255, 255, .5);
-    margin-bottom: 100px;
 }
 
 #topbar ul {
@@ -131,15 +129,15 @@ body {
     border: 3px solid rgba(255, 255, 255, .5);
     border-radius: 60px;
     backdrop-filter: blur(60px);
-    width: 70vw;
-    max-height: 65vh;
-    padding: 20px;
-    overflow-y: scroll;
-    margin-bottom: none;
-    height: 60%;
+    width: 80vw;
+    max-height: 79vh; 
+    padding: 10px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    top: 50px;
 }
 
 .container::-webkit-scrollbar {

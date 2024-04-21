@@ -63,7 +63,7 @@ class AbonneController extends BaseController
 
             $abonneModel->updateAbonne($matricule_abonne, $data);
 
-            return redirect()->to(base_url('/abonne/detail/' . $matricule_abonne));
+            return redirect()->to(base_url('/gestion_abonnés'));
         }
 
         return redirect()->to(base_url('/erreur'));
