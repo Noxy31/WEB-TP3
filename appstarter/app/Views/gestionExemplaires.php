@@ -25,8 +25,8 @@
                 <form action="<?= base_url('/exemplaires/add') ?>" method="post">
                     <label for="codeCatalogue">Livre :</label>
                     <select id="codeCatalogue" name="codeCatalogue">
-                        <?php foreach ($exemplaires as $exemplaire) : ?>
-                            <option value="<?= $exemplaire['code_catalogue'] ?>"><?= $exemplaire['titre_livre'] ?></option>
+                        <?php foreach ($livres as $livre) : ?>
+                            <option value="<?= $livre['code_catalogue'] ?>"><?= $livre['titre_livre'] ?></option>
                         <?php endforeach; ?>
                     </select><br>
 

@@ -7,10 +7,13 @@ class ExemplaireController extends BaseController
     public function index()
     {
         $gestionExemplaireModel = new \App\Models\ExemplaireModel();
+        $gestionLivresModel = new \App\Models\LivresModel();
         $exemplaires = $gestionExemplaireModel->getExemplaire();
+        $livres = $gestionLivresModel->getLivres();
         
         $data = [
-            'exemplaires' => $exemplaires
+            'exemplaires' => $exemplaires,
+            'livres' => $livres,
         ];
 
         $template =
@@ -23,6 +26,7 @@ class ExemplaireController extends BaseController
 
     public function add() {   
         $exemplaireModel = new \App\Models\ExemplaireModel();
+        $livresModel = new \App\Models\LivresModel();
 
         $codeCatalogue = $this->request->getPost('codeCatalogue');
         $nomEditeur = $this->request->getPost('nomEditeur');
