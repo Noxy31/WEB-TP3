@@ -59,8 +59,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
 }
 
 body {
@@ -130,7 +128,7 @@ body {
     border-radius: 60px;
     backdrop-filter: blur(60px);
     width: 80vw;
-    max-height: 79vh; 
+    max-height: 79vh;
     padding: 10px;
     overflow-y: auto;
     display: flex;
@@ -186,7 +184,7 @@ thead {
 
 .ligne-tableau:not(:hover) {
     transform: scale(1);
-    
+
 }
 
 th {
@@ -203,12 +201,12 @@ td {
     font-size: 1.25rem;
 }
 
-form{
+form {
     font-size: 1.5rem;
-    
+
 }
 
-input{
+input {
     font-size: 1rem;
 
 }
