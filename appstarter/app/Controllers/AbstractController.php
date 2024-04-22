@@ -14,7 +14,7 @@ abstract class AbstractController extends BaseController
         $gestionAboModel = model($this->classModel);
 
         $abonnes = $gestionAboModel->findAll();
-        $data['abonnes'] = $abonnes; // On passe les abonnés sur la vue
+        $data['abonnes'] = $abonnes;
         $template =
             view('templates/gestionHeader.php') .
             view(($this->template), $data) .
@@ -48,7 +48,7 @@ abstract class AbstractController extends BaseController
         return redirect()->to(base_url($this->return));
     }
 
-    public function update($matricule_abonne)
+    public function update($matricule_abonne) // Fonction pour modifier/mettre à jour
 {
     $abonneModel = model($this->classModel);
     $fields = $abonneModel->getAllowedFields();
