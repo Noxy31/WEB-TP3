@@ -154,3 +154,9 @@ span.fade {
     color: #efe2e2;
     text-shadow: 4px 6px 4px #140718;
 }
+
+.icon img {
+    height: 30px;
+    width: auto;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(152deg) brightness(103%) contrast(103%);
+}

@@ -26,13 +26,15 @@ class AbonneModel extends Model
         return $this->find($matricule);
     }
 
-    public function getAbonnes()
-    {
+    public function getAbonnes() {
         return $this->findAll();
     }
 
-    public function updateAbonne($matricule_abonne, $data)
-    {
+    public function updateAbonne($matricule_abonne, $data) {
         return $this->update($matricule_abonne, $data);
+    }
+
+    public function deleteAbonne($matricule_abonne) {
+        return $this->where('matricule_abonne', $matricule_abonne)->delete();
     }
 }

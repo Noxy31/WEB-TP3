@@ -27,7 +27,7 @@
                 <input type="text" id="date_adhesion" name='date_adhesion_abonne' value="<?php echo $abonne['date_adhesion_abonne']; ?>"><br>
 
                 <label for="adresse">Adresse :</label>
-                <input type="text" id="adresse" name='adresse_abonne'] value="<?php echo $abonne['adresse_abonne']; ?>"><br>
+                <input type="text" id="adresse" name='adresse_abonne' ] value="<?php echo $abonne['adresse_abonne']; ?>"><br>
 
                 <label for="telephone">Téléphone :</label>
                 <input type="text" id="telephone" name='telephone_abonne' value="<?php echo $abonne['telephone_abonne']; ?>"><br>
@@ -37,6 +37,16 @@
 
                 <input class="bouton" type="submit" value="Modifier">
             </form>
+
+            <form id="deleteForm" action="<?php echo base_url('/abonne/delete/' . $abonne['matricule_abonne']); ?>" method="post">
+                <button id="deleteButton">Supprimer</button>
+            </form>
+
+            <div id="confirmationModal" style="display: none;">
+                <p>Etes-vous sûr de vouloir supprimer cet abonné ?</p>
+                <button id="confirmDelete">Oui</button>
+                <button id="cancelDelete">Non</button>
+            </div>
         </div>
     </div>
 </div>

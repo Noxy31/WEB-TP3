@@ -17,3 +17,4 @@ $routes->get('/gestion_livres','LivresController::index', ['filter' =>  \App\Fil
 $routes->post('/livres/add', 'LivresController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un livre
 $routes->get('/gestion_exemplaires','ExemplaireController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page de gestion des exemplaires
 $routes->post('/exemplaires/add', 'ExemplaireController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un exemplaire
+$routes->post('/abonne/delete/(:any)', 'AbonneController::delete/$1',['filter' =>  \App\Filters\AuthenticatedFilter::class]);

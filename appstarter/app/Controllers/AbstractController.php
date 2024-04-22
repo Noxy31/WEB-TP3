@@ -49,18 +49,21 @@ abstract class AbstractController extends BaseController
     }
 
     public function update($matricule_abonne) // Fonction pour modifier/mettre à jour
-{
-    $abonneModel = model($this->classModel);
-    $fields = $abonneModel->getAllowedFields();
+    {
+        $abonneModel = model($this->classModel);
+        $fields = $abonneModel->getAllowedFields();
         foreach ($fields as $field) {
             $data[$field] = $this->request->getPost($field);
         }
-    $abonneModel->updateAbonne($matricule_abonne, $data);
+        $abonneModel->updateAbonne($matricule_abonne, $data);
 
-    return redirect()->to(base_url($this->return));
-}
+        return redirect()->to(base_url($this->return));
+    }
 
-    public function delete()
+    public function delete($matricule_abonne) // Fonction pour supprimer
     {
+        $abonneModel = model($this->classModel);
+        $abonneModel->deleteAbonne($matricule_abonne);
+        return redirect()->to(base_url($this->return));
     }
 }
