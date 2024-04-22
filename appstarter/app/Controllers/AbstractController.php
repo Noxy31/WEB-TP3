@@ -8,6 +8,7 @@ abstract class AbstractController extends BaseController
     protected $template = "";
     protected $templateDetail = "";
     protected $return = "";
+
     public function index()
     {
         $gestionAboModel = model($this->classModel);
@@ -44,34 +45,22 @@ abstract class AbstractController extends BaseController
         }
         $abonneModel->insert($data);
 
-        return redirect()->to(base_url($this -> return));
-        return "";
+        return redirect()->to(base_url($this->return));
     }
 
-    public function update($matricule_abonne) // Fonction pour mettre a jour les infos des abonnés
-    {
-        $abonneModel = model($this->classModel);
-
-        if ($this->request->getMethod() === 'post') {
-            $data = [
-                'nom_abonne' => $this->request->getPost('nom'),
-                'date_naissance_abonne' => $this->request->getPost('date_naissance'),
-                'date_adhesion_abonne' => $this->request->getPost('date_adhesion'),
-                'adresse_abonne' => $this->request->getPost('adresse'),
-                'telephone_abonne' => $this->request->getPost('telephone'),
-                'CSP_abonne' => $this->request->getPost('csp')
-            ];
-
-            $abonneModel->updateAbonne($matricule_abonne, $data);
-
-            return redirect()->to(base_url('/gestion_abonnés'));
+    public function update($matricule_abonne)
+{
+    $abonneModel = model($this->classModel);
+    $fields = $abonneModel->getAllowedFields();
+        foreach ($fields as $field) {
+            $data[$field] = $this->request->getPost($field);
         }
+    $abonneModel->updateAbonne($matricule_abonne, $data);
 
-        return redirect()->to(base_url('/erreur'));
-    }
-    
-    public function delete() 
+    return redirect()->to(base_url($this->return));
+}
+
+    public function delete()
     {
-
     }
 }
