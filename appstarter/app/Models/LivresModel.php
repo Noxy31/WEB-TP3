@@ -14,6 +14,10 @@ class LivresModel extends Model
         'theme_livre',
     ];
 
+    public function getAllowedFields() {
+        return $this->allowedFields;
+    }
+
     public function getLivres()
 {
     $livres = $this->select('livre.code_catalogue, livre.titre_livre, livre.theme_livre, auteur.nom_auteur, GROUP_CONCAT(motcle.motCle) as mots_cle')

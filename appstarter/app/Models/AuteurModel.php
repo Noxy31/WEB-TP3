@@ -17,6 +17,9 @@ class AuteurModel extends Model
     {
         return $this->findAll();
     }
+    public function getAllowedFields() {
+        return $this->allowedFields;
+    }
 
     public function getOrCreateAuteur($nomAuteur)
     {

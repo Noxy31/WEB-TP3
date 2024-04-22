@@ -16,6 +16,10 @@ class ExemplaireModel extends Model
         'emplacement_rayon',
         'code_catalogue',
     ];
+    
+    public function getAllowedFields() {
+        return $this->allowedFields;
+    }
 
     public function getExemplaire()
     {

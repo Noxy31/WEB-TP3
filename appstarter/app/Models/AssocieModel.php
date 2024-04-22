@@ -14,4 +14,8 @@ class AssocieModel extends Model
     {
         return $this->insert(['code_catalogue' => $codeCatalogue, 'id_motcle' => $idMotCle]);
     }
+
+    public function getAllowedFields() {
+        return $this->allowedFields;
+    }
 }

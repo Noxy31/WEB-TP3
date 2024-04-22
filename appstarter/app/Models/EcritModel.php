@@ -14,4 +14,8 @@ class EcritModel extends Model
     {
         return $this->insert(['code_catalogue' => $codeCatalogue, 'id_auteur' => $idAuteur]);
     }
+    
+    public function getAllowedFields() {
+        return $this->allowedFields;
+    }
 }

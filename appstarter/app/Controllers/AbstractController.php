@@ -7,6 +7,7 @@ abstract class AbstractController extends BaseController
     protected $classModel = "";
     protected $template = "";
     protected $templateDetail = "";
+    protected $return = "";
     public function index()
     {
         $gestionAboModel = model($this->classModel);
@@ -32,7 +33,7 @@ abstract class AbstractController extends BaseController
         return $template;
     }
 
-    public function add() // Fonction pour ajouter un abonné 
+    public function add() // Fonction pour ajouter
     {
         $abonneModel = model($this->classModel);
 
@@ -43,7 +44,7 @@ abstract class AbstractController extends BaseController
         }
         $abonneModel->insert($data);
 
-        return redirect()->to(base_url('/gestion_abonnés'));
+        return redirect()->to(base_url($this -> return));
         return "";
     }
 
