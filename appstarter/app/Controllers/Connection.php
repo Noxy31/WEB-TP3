@@ -18,6 +18,7 @@ class Connection extends BaseController
         $session = session();
         $session->set([
             'username' => isset($user) ? ($user['nom_abonne'] . strtoupper($user['nom_abonne'])) : 'Administrator',
+            'role' => isset($user) ? 'user' : 'admin',
             'loggedIn' => true
         ]);
         return redirect()->to("home");
@@ -26,6 +27,7 @@ class Connection extends BaseController
     public function attemptLogin()
     {
         $abonneModel = new \App\Models\AbonneModel();
+        
         $values = $this->request->getPost(['login', 'password']);
 
         if (
@@ -34,6 +36,7 @@ class Connection extends BaseController
         ) {
             return $this->loginUser();
         }
+
         $rechercheAbonne = $abonneModel->getAbonneByMatricule($values['login']);
         if (isset($rechercheAbonne) && $rechercheAbonne['nom_abonne'] === $values['password'])
             return $this->loginUser($rechercheAbonne);

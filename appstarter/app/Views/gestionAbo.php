@@ -4,7 +4,6 @@
         <li><a href="<?php echo base_url('/gestion_livres'); ?>">Gestion des livres</a></li>
         <li><a href="<?php echo base_url('/gestion_exemplaires'); ?>">Gestion des exemplaires</a></li>
         <li><a href="#">Gestion des emprunts</a></li>
-        <li><a href="#">Gestion des retours</a></li>
         <li><a href="#">Gestion des demandes</a></li>
     </ul>
 </div>
@@ -24,22 +23,22 @@
             <div id="formAddAbonne" style="display: none;">
                 <form action="<?= base_url('/abonne/add') ?>" method="post">
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom"><br>
+                    <input type="text" id="nom_abonne" name="nom_abonne"><br>
 
                     <label for="date_naissance">Date de naissance :</label>
-                    <input type="date" id="date_naissance" name="date_naissance"><br>
+                    <input type="date" id="date_naissance_abonne" name="date_naissance_abonne"><br>
 
                     <label for="date_adhesion">Date d'adhésion :</label>
-                    <input type="date" id="date_adhesion" name="date_adhesion"><br>
+                    <input type="date" id="date_adhesion_abonne" name="date_adhesion_abonne"><br>
 
                     <label for="adresse">Adresse :</label>
-                    <input type="text" id="adresse" name="adresse"><br>
+                    <input type="text" id="adresse_abonne" name="adresse_abonne"><br>
 
                     <label for="telephone">Téléphone :</label>
-                    <input type="text" id="telephone" name="telephone"><br>
+                    <input type="text" id="telephone_abonne" name="telephone_abonne"><br>
 
                     <label for="csp">CSP :</label>
-                    <select id="csp" name="csp"><br>
+                    <select id="CSP_abonne" name="CSP_abonne"><br>
                         <option value="Employé">Employé</option>
                         <option value="Cadre">Cadre</option>
                         <option value="Ouvrier">Ouvrier</option>

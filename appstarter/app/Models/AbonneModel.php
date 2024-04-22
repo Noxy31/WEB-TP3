@@ -18,6 +18,10 @@ class AbonneModel extends Model
         'CSP_abonne'
     ];
 
+    public function getAllowedFields() {
+        return $this->allowedFields;
+    }
+
     public function getAbonneByMatricule($matricule) {
         return $this->find($matricule);
     }
