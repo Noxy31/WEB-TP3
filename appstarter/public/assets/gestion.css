@@ -47,7 +47,7 @@
 html,
 body {
     font-family: 'PopBold';
-    background-image: url('12.png');
+    background-image: url('17.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -69,7 +69,7 @@ body {
 
 #topbar {
     background: transparent;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10000px);
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     color: #fff;
@@ -82,6 +82,7 @@ body {
     border-bottom: 2px solid rgba(255, 255, 255, .5);
     border-left: 2px solid rgba(255, 255, 255, .5);
     border-right: 2px solid rgba(255, 255, 255, .5);
+    filter: brightness(70%);
 }
 
 #topbar ul {
@@ -105,6 +106,7 @@ body {
     border-radius: 15px;
     transition: all 0.3s;
     padding: 15px;
+
 }
 
 #topbar ul li a:hover {
@@ -119,6 +121,7 @@ body {
 
 #content p {
     font-size: 1.5rem;
+    color: #ffffff;
 }
 
 .container {
@@ -126,7 +129,8 @@ body {
     border: none;
     border: 3px solid rgba(255, 255, 255, .5);
     border-radius: 60px;
-    backdrop-filter: blur(60px);
+    backdrop-filter: blur(10000px);
+    filter: brightness(70%);
     width: 80vw;
     max-height: 79vh;
     padding: 10px;
@@ -203,7 +207,13 @@ td {
 
 form {
     font-size: 1.5rem;
+    color:#ffffff;
+}
 
+select, input {
+    font-size: 1rem;
+    padding: 0.2rem;
+    border-radius: 8px;
 }
 
 input {

@@ -39,13 +39,13 @@
             </form>
 
             <form id="deleteForm" action="<?php echo base_url('/abonne/delete/' . $abonne['matricule_abonne']); ?>" method="post">
-                <button id="deleteButton">Supprimer</button>
+                <button class="bouton" id="deleteButton">Supprimer</button>
             </form>
 
             <div id="confirmationModal" style="display: none;">
                 <p>Etes-vous sûr de vouloir supprimer cet abonné ?</p>
-                <button id="confirmDelete">Oui</button>
-                <button id="cancelDelete">Non</button>
+                <button class="bouton" id="confirmDelete">Oui</button>
+                <button class="bouton" id="cancelDelete">Non</button>
             </div>
         </div>
     </div>
