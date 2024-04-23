@@ -47,7 +47,7 @@
 html,
 body {
     font-family: 'PopBold';
-    background-image: url('17.png');
+    background-image: url('12.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -69,7 +69,7 @@ body {
 
 #topbar {
     background: transparent;
-    backdrop-filter: blur(10000px);
+    backdrop-filter: blur(100px);
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     color: #fff;
@@ -82,7 +82,7 @@ body {
     border-bottom: 2px solid rgba(255, 255, 255, .5);
     border-left: 2px solid rgba(255, 255, 255, .5);
     border-right: 2px solid rgba(255, 255, 255, .5);
-    filter: brightness(70%);
+    filter: brightness(80%);
 }
 
 #topbar ul {
@@ -129,8 +129,8 @@ body {
     border: none;
     border: 3px solid rgba(255, 255, 255, .5);
     border-radius: 60px;
-    backdrop-filter: blur(10000px);
-    filter: brightness(70%);
+    backdrop-filter: blur(100px);
+    filter: brightness(80%);
     width: 80vw;
     max-height: 79vh;
     padding: 10px;
@@ -234,8 +234,22 @@ input {
     justify-content: center;
 }
 
-.icon img {
-    height: 30px;
-    width: auto;
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(152deg) brightness(103%) contrast(103%);
-}
+.autocomplete-suggestions {
+    list-style-type: none;
+    padding-left: 5px;
+    margin: 0;
+    font-size: 1rem;
+    background-color: #fff;
+    max-height: 200px;
+    max-width: 200px;
+    overflow-y: auto;
+    z-index: 1;
+    color:#121212;
+  }
+  .autocomplete-suggestions li {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .autocomplete-suggestions li:hover {
+    background-color: #f0f0f0;
+  }

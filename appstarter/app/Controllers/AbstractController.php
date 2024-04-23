@@ -11,10 +11,7 @@ abstract class AbstractController extends BaseController
 
     public function index()
     {
-        $gestionAboModel = model($this->classModel);
-
-        $abonnes = $gestionAboModel->findAll();
-        $data['abonnes'] = $abonnes;
+        $data = $this->getData();
         $template =
             view('templates/gestionHeader.php') .
             view(($this->template), $data) .
@@ -22,6 +19,25 @@ abstract class AbstractController extends BaseController
         return $template;
     }
 
+    protected function getData()
+    {
+        $model = model($this->classModel);
+        switch ($this->template) {
+            case 'gestionAbo':
+                $abonnes = $model->findAll();
+                $data['abonnes'] = $abonnes;
+                break;
+            case 'gestionEmprunts':
+                $emprunts = $model->findAll();
+                $data['emprunts'] = $emprunts;
+                break;
+            default:
+                $data = [];
+                break;
+        }
+        
+        return $data;
+    }
     public function detail($matricule_abonne) // Fonction pour récupérer le matricule des abonnés et afficher leurs infos
     {
         $abonneModel = model($this->classModel);
@@ -66,4 +82,5 @@ abstract class AbstractController extends BaseController
         $abonneModel->deleteAbonne($matricule_abonne);
         return redirect()->to(base_url($this->return));
     }
+
 }

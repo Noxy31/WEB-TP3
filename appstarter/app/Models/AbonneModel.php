@@ -18,23 +18,42 @@ class AbonneModel extends Model
         'CSP_abonne'
     ];
 
-    public function getAllowedFields() {
+    public function getAllowedFields()
+    {
         return $this->allowedFields;
     }
 
-    public function getAbonneByMatricule($matricule) {
+    public function getAbonneByMatricule($matricule)
+    {
         return $this->find($matricule);
     }
 
-    public function getAbonnes() {
+    public function getAbonnes()
+    {
         return $this->findAll();
     }
 
-    public function updateAbonne($matricule_abonne, $data) {
+    public function updateAbonne($matricule_abonne, $data)
+    {
         return $this->update($matricule_abonne, $data);
     }
 
-    public function deleteAbonne($matricule_abonne) {
+    public function deleteAbonne($matricule_abonne)
+    {
         return $this->where('matricule_abonne', $matricule_abonne)->delete();
     }
+
+    public function searchByName($term)
+{
+    $results = $this->like('nom_abonne', $term)->findAll();
+    if (!is_array($results)) {
+        $results = [];
+    }
+    $formattedResults = [];
+    foreach ($results as $result) {
+        $formattedResults[] = ['nom_abonne' => $result['nom_abonne']];
+    }
+
+    return $formattedResults;
+}
 }

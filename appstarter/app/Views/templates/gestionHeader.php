@@ -7,5 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/gestion.css');?>"/>
     <script src="<?php echo base_url('assets/JS/DeletingScript.js');?>"></script>
+    <script src="<?php echo base_url('assets/JS/autocomplete.js');?>"></script>
 </head>
 <body>
