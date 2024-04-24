@@ -44,16 +44,16 @@ class AbonneModel extends Model
     }
 
     public function searchByName($term)
-{
-    $results = $this->like('nom_abonne', $term)->findAll();
-    if (!is_array($results)) {
-        $results = [];
-    }
-    $formattedResults = [];
-    foreach ($results as $result) {
-        $formattedResults[] = ['nom_abonne' => $result['nom_abonne']];
-    }
+    {
+        $results = $this->like('nom_abonne', $term)->findAll();
+        if (!is_array($results)) {
+            $results = [];
+        }
+        $formattedResults = [];
+        foreach ($results as $result) {
+            $formattedResults[] = ['nom_abonne' => $result['nom_abonne']];
+        }
 
-    return $formattedResults;
-}
+        return $formattedResults;
+    }
 }

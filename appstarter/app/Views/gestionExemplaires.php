@@ -22,12 +22,11 @@
             </script>
             <div id="formAddExemplaire" style="display: none;">
                 <form action="<?= base_url('/exemplaires/add') ?>" method="post">
-                    <label for="codeCatalogue">Livre :</label>
-                    <select id="codeCatalogue" name="codeCatalogue">
-                        <?php foreach ($livres as $livre) : ?>
-                            <option value="<?= $livre['code_catalogue'] ?>"><?= $livre['titre_livre'] ?></option>
-                        <?php endforeach; ?>
-                    </select><br>
+                    <label for="titre_livre">Livre :</label>
+                    <input type="text" id="titre_livre" name="titre_livre"><br>
+                    <script>
+                        setupAutocomplete('titre_livre', '<?= base_url('exemplaires/suggestions') ?>', 'titre_livre');
+                    </script>
 
                     <label for="nomEditeur">Nom de l'Éditeur :</label>
                     <input type="text" id="nomEditeur" name="nomEditeur"><br>

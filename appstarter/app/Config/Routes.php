@@ -21,4 +21,5 @@ $routes->post('/abonne/delete/(:any)', 'AbonneController::delete/$1',['filter' =
 $routes->get('/gestion_emprunts', 'EmpruntsController::index',['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page des emprunts
 $routes->post('/emprunts/update/(:num)', 'EmpruntsController::update/$1', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour mettre a jour les emprunt
 $routes->post('/emprunts/add', 'EmpruntsController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour update la DBB et ajouter un emprunt
-$routes->get('/emprunts/suggestions', 'AutoCompleteController::autocomplete'); // Autocompletion
+$routes->get('emprunts/suggestions', 'AutoCompleteController::autocompleteAbo'); // Autocompletion Abo
+$routes->get('exemplaires/suggestions', 'AutoCompleteController::autocompleteLivres'); // Autocompletion Livres

@@ -21,6 +21,8 @@ class ExemplaireModel extends Model
         return $this->allowedFields;
     }
 
+    
+
     public function getExemplaire()
     {
         $exemplaires = $this->select('exemplaire.cote_exemplaire, livre.titre_livre, exemplaire.nom_editeur, exemplaire.code_usure, exemplaire.date_acquisition, exemplaire.emplacement_rayon')
@@ -39,5 +41,19 @@ class ExemplaireModel extends Model
             'emplacement_rayon' => $emplacementRayon,
             'code_catalogue' => $codeCatalogue,
         ]);
+    }
+
+    public function searchByName($term)
+    {
+        $results = $this->like('titre_livre', $term)->findAll();
+        if (!is_array($results)) {
+            $results = [];
+        }
+        $formattedResults = [];
+        foreach ($results as $result) {
+            $formattedResults[] = ['titre_livre' => $result['titre_livre']];
+        }
+
+        return $formattedResults;
     }
 }

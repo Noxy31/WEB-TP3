@@ -31,6 +31,10 @@ abstract class AbstractController extends BaseController
                 $emprunts = $model->findAll();
                 $data['emprunts'] = $emprunts;
                 break;
+            case 'gestionLivres':
+                $livres = $model->findAll();
+                $data['livres'] = $livres;
+                break;
             default:
                 $data = [];
                 break;

@@ -10,5 +10,6 @@ class AbonneController extends AbstractController
     protected $template = 'gestionAbo';
     protected $templateDetail = 'detailAbo';
     protected $return = '/gestion_abonnes';
+
 }
 

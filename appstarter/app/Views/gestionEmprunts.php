@@ -25,7 +25,7 @@
                     <label for="nom_abonne">Nom de l'abonné :</label>
                     <input type="text" id="nom_abonne" name="nom_abonne"><br>
                     <script>
-                        setupAutocomplete('nom_abonne', '<?= base_url('/emprunts/suggestions') ?>');
+                        setupAutocomplete('nom_abonne', '<?= base_url('emprunts/suggestions') ?>');
                     </script>
 
                     <label for='cote_exemplaire'>Cote exemplaire :</label>

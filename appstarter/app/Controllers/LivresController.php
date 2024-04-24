@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class LivresController extends BaseController
+class LivresController extends AbstractController
 {
     public function index()
     {
