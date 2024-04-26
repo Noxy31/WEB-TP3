@@ -69,6 +69,7 @@
 
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php foreach ($emprunts as $emprunt) : ?>
                         <tr>
@@ -77,7 +78,11 @@
                             <td><?php echo $emprunt['date_emprunt']; ?></td>
                             <td><?php echo $emprunt['date_retour']; ?></td>
                             <td><?php echo $emprunt['estRenouvele']; ?></td>
-
+                            <td>
+                                <form action="<?= base_url('/emprunts/delete/' . $emprunt['cote_exemplaire']) ?>" method="post">
+                                    <input type="submit" value="Supprimer l'emprunt">
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

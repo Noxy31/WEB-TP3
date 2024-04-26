@@ -56,10 +56,13 @@ abstract class AbstractController extends BaseController
         return redirect()->to(base_url($this->return));
     }
 
-    public function delete($matricule_abonne) // Fonction pour supprimer
+    public function delete($primaryKey)
     {
-        $abonneModel = model($this->classModel);
-        $abonneModel->deleteAbonne($matricule_abonne);
+        $model = model($this->classModel);
+        if (!$model->find($primaryKey)) {
+            return redirect()->back()->with('error', 'La valeur à supprimer n\'existe pas.');
+        }
+        $model->delete($primaryKey);
         return redirect()->to(base_url($this->return));
     }
 }

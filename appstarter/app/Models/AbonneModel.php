@@ -59,4 +59,5 @@ class AbonneModel extends Model
 
         return $formattedResults;
     }
+
 }

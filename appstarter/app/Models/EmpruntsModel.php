@@ -22,14 +22,18 @@ class EmpruntsModel extends Model
         return $this->allowedFields;
     }
 
-    public function updateEmprunts($cote_exemplaire, $date_emprunt, $data)
+    public function deleteEmpr($cote_exemplaire)
     {
-        return $this->update($cote_exemplaire, $date_emprunt, $data);
+        try {
+            $this->where('cote_exemplaire', $cote_exemplaire)->delete();
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
-    public function deleteEmprunts($date_emprunt)
+    public function isEmpruntExists($cote_exemplaire)
     {
-        return $this->where('date_emprunt', $date_emprunt)->delete();
+        return $this->where('cote_exemplaire', $cote_exemplaire)->countAllResults() > 0;
     }
-
 }

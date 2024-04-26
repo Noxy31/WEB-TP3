@@ -16,17 +16,17 @@ class ExemplaireModel extends Model
         'emplacement_rayon',
         'code_catalogue',
     ];
-    
-    public function getAllowedFields() {
+
+    public function getAllowedFields()
+    {
         return $this->allowedFields;
     }
-
-    
 
     public function getExemplaire()
     {
         $exemplaires = $this->select('exemplaire.cote_exemplaire, livre.titre_livre, exemplaire.nom_editeur, exemplaire.code_usure, exemplaire.date_acquisition, exemplaire.emplacement_rayon')
             ->join('livre', 'livre.code_catalogue = exemplaire.code_catalogue')
+            ->where('exemplaire.code_usure !=', 'DEGRADE')
             ->findAll();
 
         return $exemplaires;
@@ -44,20 +44,20 @@ class ExemplaireModel extends Model
     }
 
     public function searchByName($term)
-{
-    $results = $this->like('titre_livre', $term)->findAll();
+    {
+        $results = $this->like('titre_livre', $term)->findAll();
 
-    if (!is_array($results)) {
-        $results = [];
-    }
-    $formattedResults = [];
-    foreach ($results as $result) {
-        $formattedResults[] = [
-            'titre_livre' => $result['titre_livre'],
-            'code_catalogue' => $result['code_catalogue']
-        ];
-    }
+        if (!is_array($results)) {
+            $results = [];
+        }
+        $formattedResults = [];
+        foreach ($results as $result) {
+            $formattedResults[] = [
+                'titre_livre' => $result['titre_livre'],
+                'code_catalogue' => $result['code_catalogue']
+            ];
+        }
 
-    return $formattedResults;
-}
+        return $formattedResults;
+    }
 }

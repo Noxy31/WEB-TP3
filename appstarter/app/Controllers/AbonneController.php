@@ -17,6 +17,11 @@ class AbonneController extends AbstractController
         return $this->index($data);
     }
 
+    public function delete($matricule_abonne)
+    {
+        return parent::delete($matricule_abonne);
+    }
+
     protected $classModel = AbonneModel::class;
     protected $template = 'gestionAbo';
     protected $templateDetail = 'detailAbo';
