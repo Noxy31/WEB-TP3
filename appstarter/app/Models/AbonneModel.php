@@ -30,6 +30,9 @@ class AbonneModel extends Model
 
     public function getAbonnes()
     {
+        $this->select('abonne.*, demande.date_demande, demande.code_catalogue');
+        $this->join('demande', 'abonne.matricule_abonne = demande.matricule_abonne');
+        $this->join('livre', 'livre.code_catalogue = demande.code_catalogue');
         return $this->findAll();
     }
 

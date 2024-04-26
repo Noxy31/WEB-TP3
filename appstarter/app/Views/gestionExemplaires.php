@@ -4,7 +4,7 @@
         <li><a href="<?php echo base_url('/gestion_livres'); ?>">Gestion des livres</a></li>
         <li><a href="<?php echo base_url('/gestion_exemplaires'); ?>">Gestion des exemplaires</a></li>
         <li><a href="<?php echo base_url('/gestion_emprunts'); ?>">Gestion des emprunts</a></li>
-        <li><a href="#">Gestion des demandes</a></li>
+        <li><a href="<?php echo base_url('/gestion_demandes'); ?>">Gestion des demandes</a></li>
     </ul>
 </div>
 <div id="content">
@@ -22,11 +22,12 @@
             </script>
             <div id="formAddExemplaire" style="display: none;">
                 <form action="<?= base_url('/exemplaires/add') ?>" method="post">
-                    <label for="titre_livre">Livre :</label>
-                    <input type="text" id="titre_livre" name="titre_livre"><br>
-                    <script>
-                        setupAutocomplete('titre_livre', '<?= base_url('exemplaires/suggestions') ?>', 'titre_livre');
-                    </script>
+                    <label for="codeCatalogue">Livre :</label>
+                    <select id="codeCatalogue" name="codeCatalogue">
+                        <?php foreach ($livres as $livre) : ?>
+                            <option value="<?= $livre['code_catalogue'] ?>"><?= $livre['titre_livre'] ?></option>
+                        <?php endforeach; ?>
+                    </select><br>
 
                     <label for="nomEditeur">Nom de l'Éditeur :</label>
                     <input type="text" id="nomEditeur" name="nomEditeur"><br>

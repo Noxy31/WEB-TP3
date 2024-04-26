@@ -9,7 +9,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Connection::index'); // Page de Login
 $routes->post('/login', 'Connection::attemptLogin'); // Post pour tentative de connexion
 $routes->get('/home', 'AdminController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Admin Home aprés Login
-$routes->get('/gestion_abonnes', 'AbonneController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Pas de Gestion des abonnés Admin
+$routes->get('/gestion_abonnes', 'AbonneController::list', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Pas de Gestion des abonnés Admin
 $routes->get('/abonne/detail/(:any)', 'AbonneController::detail/$1', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour récupérer la page d'info d'un abonné
 $routes->post('/abonne/update/(:num)', 'AbonneController::update/$1', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour mettre a jour les infos des abonnés
 $routes->post('/abonne/add', 'AbonneController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour update la DBB et ajouter un abonné
@@ -18,8 +18,9 @@ $routes->post('/livres/add', 'LivresController::add', ['filter' =>  \App\Filters
 $routes->get('/gestion_exemplaires','ExemplaireController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page de gestion des exemplaires
 $routes->post('/exemplaires/add', 'ExemplaireController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un exemplaire
 $routes->post('/abonne/delete/(:any)', 'AbonneController::delete/$1',['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour supprimer un abonne
-$routes->get('/gestion_emprunts', 'EmpruntsController::index',['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page des emprunts
+$routes->get('/gestion_emprunts', 'EmpruntsController::list',['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page des emprunts
 $routes->post('/emprunts/update/(:num)', 'EmpruntsController::update/$1', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour mettre a jour les emprunt
 $routes->post('/emprunts/add', 'EmpruntsController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour update la DBB et ajouter un emprunt
-$routes->get('emprunts/suggestions', 'AutoCompleteController::autocompleteAbo'); // Autocompletion Abo
-$routes->get('exemplaires/suggestions', 'AutoCompleteController::autocompleteLivres'); // Autocompletion Livres
+$routes->get('/emprunts/suggestions', 'AutoCompleteController::autocompleteAbo'); // Autocompletion Abo
+$routes->get('/exemplaires/suggestions', 'AutoCompleteController::autocompleteLivres'); // Autocompletion Livres
+$routes->get('/gestion_demandes', 'DemandesController::list', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page de gestion des demandes

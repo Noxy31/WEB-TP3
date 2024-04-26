@@ -4,7 +4,7 @@
         <li><a href="<?php echo base_url('/gestion_livres'); ?>">Gestion des livres</a></li>
         <li><a href="<?php echo base_url('/gestion_exemplaires'); ?>">Gestion des exemplaires</a></li>
         <li><a href="<?php echo base_url('/gestion_emprunts'); ?>">Gestion des emprunts</a></li>
-        <li><a href="#">Gestion des demandes</a></li>
+        <li><a href="<?php echo base_url('/gestion_demandes'); ?>">Gestion des demandes</a></li>
     </ul>
 </div>
 <div id="content">
@@ -23,13 +23,23 @@
             <div id="formAddEmprunt" style="display: none;">
                 <form action="<?= base_url('/emprunts/add') ?>" method="post">
                     <label for="nom_abonne">Nom de l'abonné :</label>
-                    <input type="text" id="nom_abonne" name="nom_abonne"><br>
-                    <script>
-                        setupAutocomplete('nom_abonne', '<?= base_url('emprunts/suggestions') ?>');
-                    </script>
-
-                    <label for='cote_exemplaire'>Cote exemplaire :</label>
-                    <input type="text" id='cote_exemplaire' name='cote_exemplaire'><br>
+                    <select id="matricule_abonne" name="matricule_abonne">
+                        <?php
+                        $abonneModel = model('App\Models\AbonneModel');
+                        $abonnes = $abonneModel->findAll();
+                        foreach ($abonnes as $abonne) : ?>
+                            <option value="<?= $abonne['matricule_abonne'] ?>"><?= $abonne['nom_abonne'] ?></option>
+                        <?php endforeach; ?>
+                    </select><br>
+                    <label for="cote_exemplaire">Cote Exemplaire :</label>
+                    <select id="cote_exemplaire" name="cote_exemplaire">
+                        <?php
+                        $exemplairesModel = model('App\Models\ExemplaireModel');
+                        $livres = $exemplairesModel->findAll();
+                        foreach ($livres as $livre) : ?>
+                            <option value="<?= $livre['cote_exemplaire'] ?>"><?= $livre['cote_exemplaire'] ?></option>
+                        <?php endforeach; ?>
+                    </select><br>
 
                     <label for='date_emprunt'>Date d'emprunt :</label>
                     <input type="date" id='date_emprunt' name='date_emprunt'><br>

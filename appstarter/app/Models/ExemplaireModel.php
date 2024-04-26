@@ -44,16 +44,20 @@ class ExemplaireModel extends Model
     }
 
     public function searchByName($term)
-    {
-        $results = $this->like('titre_livre', $term)->findAll();
-        if (!is_array($results)) {
-            $results = [];
-        }
-        $formattedResults = [];
-        foreach ($results as $result) {
-            $formattedResults[] = ['titre_livre' => $result['titre_livre']];
-        }
+{
+    $results = $this->like('titre_livre', $term)->findAll();
 
-        return $formattedResults;
+    if (!is_array($results)) {
+        $results = [];
     }
+    $formattedResults = [];
+    foreach ($results as $result) {
+        $formattedResults[] = [
+            'titre_livre' => $result['titre_livre'],
+            'code_catalogue' => $result['code_catalogue']
+        ];
+    }
+
+    return $formattedResults;
+}
 }

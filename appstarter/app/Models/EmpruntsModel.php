@@ -10,6 +10,8 @@ class EmpruntsModel extends Model
     protected $table = ['emprunte'];
     protected $primaryKey = ['cote_exemplaire', 'date_emprunt'];
     protected $allowedFields = [
+        'cote_exemplaire',
+        'date_emprunt',
         'matricule_abonne',
         'date_retour',
         'estRenouvele'
