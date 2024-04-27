@@ -7,14 +7,19 @@ use App\Models\AbonneModel;
 class AbonneController extends AbstractController
 {
     protected $classModel = AbonneModel::class;
-    protected $template = 'gestionAbo';
+    protected $template = '';
     protected $templateDetail = 'detailAbo';
     protected $return = '/gestion_abonnes';
     protected $data = 'abonnes';
 
-    
     public function list()
     {
+        $session = session();
+        if ($session->has('role') && $session->get('role') == 'admin') {
+            $this->template = 'gestionAbo';
+        } else {
+            $this->template = 'abonneLivres';
+        }
         $gestionAboModel = model($this->classModel);
         $abonnes = $gestionAboModel->findAll();
         $data = [
@@ -28,6 +33,4 @@ class AbonneController extends AbstractController
     {
         return parent::delete($matricule_abonne);
     }
-
-    
 }

@@ -1,10 +1,8 @@
 <div id="topbar">
     <ul>
-        <li class="btn"><a href="<?php echo base_url(''); ?>">Gestion des abonnés</a></li>
-        <li><a href="<?php echo base_url(''); ?>">Gestion des livres</a></li>
-        <li><a href="<?php echo base_url(''); ?>">Gestion des exemplaires</a></li>
-        <li><a href="<?php echo base_url(''); ?>">Gestion des emprunts</a></li>
-        <li><a href="#">Gestion des demandes</a></li>
+    <li class="btn"><a href="<?php echo base_url('liste_livres'); ?>">Liste des livres</a></li>
+        <li><a href="<?php echo base_url(''); ?>">Historique des emprunts</a></li>
+        <li><a href="<?php echo base_url(''); ?>">Mes informations</a></li>
     </ul>
 </div>
 <div id="content-home">

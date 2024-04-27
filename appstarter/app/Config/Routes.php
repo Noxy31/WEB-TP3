@@ -29,3 +29,7 @@ $routes->get('/emprunts/suggestions', 'AutoCompleteController::autocompleteAbo')
 $routes->get('/exemplaires/suggestions', 'AutoCompleteController::autocompleteLivres'); // Autocompletion Livres
 $routes->get('/gestion_demandes', 'DemandesController::list', ['filter' =>  \App\Filters\AdminFilter::class]); // Get pour avoir la page de gestion des demandes
 $routes->post('/demandes/delete/(:any)', 'DemandesController::delete/$1', ['filter' =>  \App\Filters\AdminFilter::class]); // Post pour update la DBB et supprimer une demande
+
+ // Routes Abonné
+
+ $routes->get('/liste_livres', 'LivresController::index', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Pas de Gestion des abonnés Admin

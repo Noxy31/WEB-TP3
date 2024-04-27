@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class LivresController extends BaseController
 {
+
     public function index()
     {
         $gestionLivresModel = new \App\Models\LivresModel();
@@ -24,26 +25,36 @@ class LivresController extends BaseController
             'motcle' => $motcle,
             'ecrits' => $ecrits,
             'associe' => $associe,
-            ];
+        ];
 
-        $template =
-            view('templates/gestionHeader.php') .
-            view('gestionLivres.php', $data) .
-            view('templates/footer.php');
+        $session = session();
+        $template = '';
+        if ($session->has('role') && $session->get('role') == 'admin') {
+            $template =
+                view('templates/gestionHeader.php') .
+                view('gestionLivres.php', $data) .
+                view('templates/footer.php');
+        } else {
+            $template =
+                view('templates/gestionHeader.php') .
+                view('abonneLivres.php', $data) .
+                view('templates/footer.php');
+        }
 
         return $template;
     }
 
-    public function add() {   
-    $livresModel = new \App\Models\LivresModel();
+    public function add()
+    {
+        $livresModel = new \App\Models\LivresModel();
 
-    $titreLivre = $this->request->getPost('titreLivre');
-    $auteur = $this->request->getPost('auteur');
-    $themeLivre = $this->request->getPost('themeLivre');
-    $motCle = $this->request->getPost('motcle');
+        $titreLivre = $this->request->getPost('titreLivre');
+        $auteur = $this->request->getPost('auteur');
+        $themeLivre = $this->request->getPost('themeLivre');
+        $motCle = $this->request->getPost('motcle');
 
-    $livreId = $livresModel->addLivre($titreLivre, $auteur, $themeLivre, $motCle);
+        $livreId = $livresModel->addLivre($titreLivre, $auteur, $themeLivre, $motCle);
 
-    return redirect()->to(base_url('/gestion_livres'));
+        return redirect()->to(base_url('/gestion_livres'));
     }
 }
