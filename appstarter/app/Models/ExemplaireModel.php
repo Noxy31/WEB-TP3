@@ -72,11 +72,8 @@ class ExemplaireModel extends Model
                             COUNT(*) as total_exemplaires')
             ->join('livre', 'livre.code_catalogue = exemplaire.code_catalogue')
             ->groupBy('livre.titre_livre');
-
-        // Exécutez la requête
         $results = $query->findAll();
 
-        // Calculer les pourcentages
         foreach ($results as &$row) {
             $totalExemplaires = $row['total_exemplaires'];
             $row['pourcentage_neuf'] = round(($row['count_neuf'] / $totalExemplaires) * 100, 2);
@@ -84,10 +81,8 @@ class ExemplaireModel extends Model
             $row['pourcentage_bon'] = round(($row['count_bon'] / $totalExemplaires) * 100, 2);
             $row['pourcentage_moyen'] = round(($row['count_moyen'] / $totalExemplaires) * 100, 2);
             $row['pourcentage_degrade'] = round(($row['count_degrade'] / $totalExemplaires) * 100, 2);
-            // Supprimer les colonnes non nécessaires
             unset($row['total_exemplaires'], $row['count_neuf'], $row['count_tres_bon'], $row['count_bon'], $row['count_moyen'], $row['count_degrade']);
         }
-
         return $results;
     }
 }

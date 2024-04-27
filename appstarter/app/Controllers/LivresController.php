@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\AbonneModel;
+
 class LivresController extends BaseController
 {
 
@@ -31,10 +33,10 @@ class LivresController extends BaseController
         $template = '';
         if ($session->has('role') && $session->get('role') == 'admin') {
             $template =
-            view('templates/gestionHeader.php', [
-                'loggedIn' => $session->get('loggedIn'),
-                'name' => $session->get('username')
-            ]) .
+                view('templates/gestionHeader.php', [
+                    'loggedIn' => $session->get('loggedIn'),
+                    'name' => $session->get('username')
+                ]) .
                 view('gestionLivres.php', $data) .
                 view('templates/footer.php');
         } else {
@@ -50,6 +52,48 @@ class LivresController extends BaseController
         return $template;
     }
 
+    public function detail($code_catalogue)
+    {
+        $livresModel = new \App\Models\LivresModel();
+        $exemplairesModel = new \App\Models\ExemplaireModel();
+        $empruntsModel = new \App\Models\EmpruntsModel();
+
+        $livre = $livresModel->find($code_catalogue);
+
+        $exemplaires = $exemplairesModel->where('code_catalogue', $code_catalogue)->findAll();
+
+        $emprunts = $empruntsModel->findAll();
+
+        $data = [
+            'livre' => $livre,
+            'exemplaires' => $exemplaires,
+            'emprunts' => $emprunts
+        ];
+        $session = session();
+        $template = view('templates/gestionHeader.php', [
+            'loggedIn' => $session->get('loggedIn'),
+            'name' => $session->get('username')
+        ]) .
+            view(('detailLivres'), $data) .
+            view('templates/footer.php');
+        return $template;
+    }
+
+    public function faireDemandeEmprunt()
+    {
+        $code_catalogue = $this->request->getPost('code_catalogue');
+        $session = session();
+        $matricule_abonne = $session->get('matricule');
+        $livreModel = new \App\Models\LivresModel();
+        $success = $livreModel->faireDemandeEmprunt($matricule_abonne, $code_catalogue);
+        if (!$success) {
+            return view('ImpossibleRequest');
+        }
+
+        return view('SuccessRequest');
+    }
+
+
     public function add()
     {
         $livresModel = new \App\Models\LivresModel();
@@ -61,6 +105,6 @@ class LivresController extends BaseController
 
         $livreId = $livresModel->addLivre($titreLivre, $auteur, $themeLivre, $motCle);
 
-        return redirect()->to(base_url('/gestion_livres'));
+        return view('SuccessRequest');
     }
 }

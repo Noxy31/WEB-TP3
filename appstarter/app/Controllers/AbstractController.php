@@ -26,31 +26,33 @@ abstract class AbstractController extends BaseController
     {
         $abonneModel = model($this->classModel);
         $abonne = $abonneModel->find($matricule_abonne);
-        
+
         $session = session();
         $template =
-        view('templates/gestionHeader.php', [
-            'loggedIn' => $session->get('loggedIn'),
-            'name' => $session->get('username')
-        ]) .
+            view('templates/gestionHeader.php', [
+                'loggedIn' => $session->get('loggedIn'),
+                'name' => $session->get('username')
+            ]) .
             view(($this->templateDetail), ['abonne' => $abonne]) .
             view('templates/footer.php');
         return $template;
     }
 
     public function add() // Fonction pour ajouter
-    {
-        $abonneModel = model($this->classModel);
-
-        $data = array();
-        $fields = $abonneModel->getAllowedFields();
-        foreach ($fields as $field) {
-            $data[$field] = $this->request->getPost($field);
-        }
-        $abonneModel->insert($data);
-
-        return redirect()->to(base_url($this->return));
+{
+    $abonneModel = model($this->classModel);
+    $data = array();
+    $fields = $abonneModel->getAllowedFields();
+    foreach ($fields as $field) {
+        $data[$field] = $this->request->getPost($field);
     }
+    $success = $abonneModel->insert($data);
+    if (!$success) {
+        return view('FailedRequest');
+    }
+
+    return view('SuccessRequest');
+}
 
     public function update($matricule_abonne) // Fonction pour modifier/mettre à jour
     {
@@ -59,18 +61,20 @@ abstract class AbstractController extends BaseController
         foreach ($fields as $field) {
             $data[$field] = $this->request->getPost($field);
         }
-        $abonneModel->updateAbonne($matricule_abonne, $data);
-
-        return redirect()->to(base_url($this->return));
+        $success = $abonneModel->updateAbonne($matricule_abonne, $data);
+        if (!$success) {
+            return view('FailedRequest');
+        }
+        return view('SuccessRequest');
     }
 
     public function delete($primaryKey)
     {
         $model = model($this->classModel);
         if (!$model->find($primaryKey)) {
-            return redirect()->back()->with('error', 'La valeur à supprimer n\'existe pas.');
+            return view('FailedRequest');
         }
         $model->delete($primaryKey);
-        return redirect()->to(base_url($this->return));
+        return view('SuccessRequest');
     }
 }

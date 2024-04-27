@@ -19,6 +19,7 @@ class Connection extends BaseController
         if (isset($user)) {
             $session->set([
                 'username' => $user->nom_abonne,
+                'matricule' => $user->matricule_abonne,
                 'role' => 'user',
                 'loggedIn' => true
             ]);

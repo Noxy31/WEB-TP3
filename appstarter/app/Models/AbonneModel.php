@@ -27,16 +27,10 @@ class AbonneModel extends Model
 
     public function getAbonneByMatricule($matricule)
     {
-        // Utilisez find() pour récupérer un seul enregistrement
         $result = $this->find($matricule);
-
-        // Vérifiez si un enregistrement a été trouvé
         if ($result !== null) {
-            // Convertissez le tableau en objet stdClass
             return (object) $result;
         }
-
-        // Retournez null si aucun enregistrement n'a été trouvé
         return null;
     }
 
@@ -56,19 +50,5 @@ class AbonneModel extends Model
     public function deleteAbonne($matricule_abonne)
     {
         return $this->where('matricule_abonne', $matricule_abonne)->delete();
-    }
-
-    public function searchByName($term)
-    {
-        $results = $this->like('nom_abonne', $term)->findAll();
-        if (!is_array($results)) {
-            $results = [];
-        }
-        $formattedResults = [];
-        foreach ($results as $result) {
-            $formattedResults[] = ['nom_abonne' => $result['nom_abonne']];
-        }
-
-        return $formattedResults;
     }
 }

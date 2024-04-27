@@ -30,8 +30,8 @@ class EmpruntsController extends AbstractController
     {
         $result = $this->empruntModel->deleteEmpr($cote_exemplaire);
         if (!$result) {
-            return redirect()->back()->with('error', 'La suppression a échoué.');
+            return view('FailedRequest');
         }
-        return redirect()->to(base_url('/gestion_emprunts'))->with('success', 'Suppression réussie.');
+        return view('SuccessRequest');
     }
 }

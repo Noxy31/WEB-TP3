@@ -14,6 +14,35 @@ class LivresModel extends Model
         'theme_livre',
     ];
 
+    public function faireDemandeEmprunt($matricule_abonne, $code_catalogue)
+    {
+        $demandeExistante = $this->demandeExiste($matricule_abonne, $code_catalogue);
+
+        if ($demandeExistante) {
+            return false;
+        }
+        $db = db_connect();
+        $builder = $db->table('demande');
+        $builder->insert([
+            'matricule_abonne' => $matricule_abonne,
+            'code_catalogue' => $code_catalogue,
+            'date_demande' => date('Y-m-d')
+        ]);
+
+        return true;
+    }
+
+    public function demandeExiste($matricule_abonne, $code_catalogue)
+    {
+        $demande = $this->db->table('demande')
+                            ->where('matricule_abonne', $matricule_abonne)
+                            ->where('code_catalogue', $code_catalogue)
+                            ->get()
+                            ->getRow();
+
+        return $demande !== null;
+    }
+
     public function getAllowedFields()
     {
         return $this->allowedFields;
@@ -53,21 +82,6 @@ class LivresModel extends Model
                 $associeModel->insertAssocie($livreId, $motCleId);
             }
         }
-
         return $livreId;
-    }
-
-    public function searchByTitle($term)
-    {
-        $results = $this->like('titre_livre', $term)->findAll();
-        if (!is_array($results)) {
-            $results = [];
-        }
-        $formattedResults = [];
-        foreach ($results as $result) {
-            $formattedResults[] = ['titre_livre' => $result['titre_livre']];
-        }
-
-        return $formattedResults;
     }
 }

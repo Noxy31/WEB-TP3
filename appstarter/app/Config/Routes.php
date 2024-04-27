@@ -32,5 +32,6 @@ $routes->get('/gestion_demandes', 'DemandesController::list', ['filter' =>  \App
 $routes->post('/demandes/delete/(:any)', 'DemandesController::delete/$1', ['filter' =>  \App\Filters\AdminFilter::class]); // Post pour update la DBB et supprimer une demande
 
  // Routes Abonné
-
- $routes->get('/liste_livres', 'LivresController::index', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Pas de Gestion des abonnés Admin
+ $routes->get('/liste_livres', 'LivresController::index', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour avoir la liste des livres pour l'abonné
+ $routes->get('/livres/detail/(:any)', 'LivresController::detail/$1', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour 
+ $routes->post('/faire_demande_emprunt', 'LivresController::faireDemandeEmprunt', ['filter' =>  \App\Filters\SubscriberFilter::class]);// Post pour faire une demande d'emprunt

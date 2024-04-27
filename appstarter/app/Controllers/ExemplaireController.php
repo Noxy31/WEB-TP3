@@ -17,10 +17,10 @@ class ExemplaireController extends BaseController
         ];
         $session = session();
         $template =
-        view('templates/gestionHeader.php', [
-            'loggedIn' => $session->get('loggedIn'),
-            'name' => $session->get('username')
-        ]) .
+            view('templates/gestionHeader.php', [
+                'loggedIn' => $session->get('loggedIn'),
+                'name' => $session->get('username')
+            ]) .
             view('gestionExemplaires.php', $data) .
             view('templates/footer.php');
 
@@ -39,7 +39,11 @@ class ExemplaireController extends BaseController
 
         $exemplaireId = $exemplaireModel->addExemplaire($codeCatalogue, $nomEditeur, $codeUsure, $dateAcquisition, $emplacementRayon);
 
-        return redirect()->to(base_url('/gestion_exemplaires'));
+        if (!$exemplaireId) {
+            return view('FailedRequest');
+        }
+
+        return view('SuccessRequest');
     }
 
     public function gestionEtatExemplaires()
@@ -51,10 +55,10 @@ class ExemplaireController extends BaseController
         ];
         $session = session();
         $template =
-        view('templates/gestionHeader.php', [
-            'loggedIn' => $session->get('loggedIn'),
-            'name' => $session->get('username')
-        ]) .
+            view('templates/gestionHeader.php', [
+                'loggedIn' => $session->get('loggedIn'),
+                'name' => $session->get('username')
+            ]) .
             view('detailExemplaires', $data) .
             view('templates/footer.php');
 
