@@ -15,9 +15,13 @@ class DemandesController extends AbstractController
     {
         $abonneModel = model(AbonneModel::class);
         $demandes = $abonneModel->getAbonnes();
-
+        usort($demandes, function ($a, $b) {
+            if ($a['code_catalogue'] == $b['code_catalogue']) {
+                return strtotime($a['date_demande']) - strtotime($b['date_demande']);
+            }
+            return $a['code_catalogue'] - $b['code_catalogue'];
+        });
         $data['demandes'] = $demandes;
-
         return $this->index($data);
     }
 
@@ -25,5 +29,4 @@ class DemandesController extends AbstractController
     {
         return parent::delete($code_catalogue);
     }
-
 }
