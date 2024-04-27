@@ -4,11 +4,11 @@
         <li><a href="<?php echo base_url('/gestion_livres'); ?>">Gestion des livres</a></li>
         <li><a href="<?php echo base_url('/gestion_exemplaires'); ?>">Gestion des exemplaires</a></li>
         <li><a href="<?php echo base_url('/gestion_emprunts'); ?>">Gestion des emprunts</a></li>
-        <li><a href="#">Gestion des demandes</a></li>
+        <li><a href="<?php echo base_url('/gestion_demandes'); ?>">Gestion des demandes</a></li>
     </ul>
 </div>
-<div id="content">
-    <div class="h1Cont">
+<div id="content-home">
+    <div class="h1Cont-home">
         <h1 class="name"> Bibliotheca Liber Primus</h1>
     </div>
     <p></p>

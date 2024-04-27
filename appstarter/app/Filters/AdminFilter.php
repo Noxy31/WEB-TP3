@@ -6,21 +6,15 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class AuthenticatedFilter implements FilterInterface
+class AdminFilter extends AuthenticatedFilter
 {
     public function before(RequestInterface $request, $args = null)
     {
         $session = session();
-        if ($session->has('loggedIn') && $session->get('loggedIn') == true) {
+        if ($session->has('role') && $session->get('role') == 'admin') {
             return $request;
         } else {
-            return redirect()->to('login');
+            return redirect()->to('NonAuthorized');
         }
-    }
-
-
-    public function after(RequestInterface $request, ResponseInterface $response, $args = null)
-    {
-
     }
 }

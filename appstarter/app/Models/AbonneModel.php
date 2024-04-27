@@ -9,7 +9,9 @@ class AbonneModel extends Model
     protected $DBGroup = 'default';
     protected $table = 'abonne';
     protected $primaryKey = 'matricule_abonne';
+    protected $matricule = 'matricule_abonne';
     protected $allowedFields = [
+        'matricule_abonne',
         'nom_abonne',
         'date_naissance_abonne',
         'date_adhesion_abonne',
@@ -25,7 +27,17 @@ class AbonneModel extends Model
 
     public function getAbonneByMatricule($matricule)
     {
-        return $this->find($matricule);
+        // Utilisez find() pour récupérer un seul enregistrement
+        $result = $this->find($matricule);
+
+        // Vérifiez si un enregistrement a été trouvé
+        if ($result !== null) {
+            // Convertissez le tableau en objet stdClass
+            return (object) $result;
+        }
+
+        // Retournez null si aucun enregistrement n'a été trouvé
+        return null;
     }
 
     public function getAbonnes()
@@ -59,5 +71,4 @@ class AbonneModel extends Model
 
         return $formattedResults;
     }
-
 }
