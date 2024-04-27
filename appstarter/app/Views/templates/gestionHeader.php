@@ -10,3 +10,8 @@
     <script src="<?php echo base_url('assets/JS/autocomplete.js');?>"></script>
 </head>
 <body>
+    <div id="userMessage">
+        <?php if (isset($loggedIn) && $loggedIn == true) : ?>
+            <span>Bonjour <?= esc($name) ?> !</span>
+        <?php endif ?>
+    </div>

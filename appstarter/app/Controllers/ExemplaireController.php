@@ -15,9 +15,12 @@ class ExemplaireController extends BaseController
             'exemplaires' => $exemplaires,
             'livres' => $livres,
         ];
-
+        $session = session();
         $template =
-            view('templates/gestionHeader.php') .
+        view('templates/gestionHeader.php', [
+            'loggedIn' => $session->get('loggedIn'),
+            'name' => $session->get('username')
+        ]) .
             view('gestionExemplaires.php', $data) .
             view('templates/footer.php');
 
@@ -46,8 +49,12 @@ class ExemplaireController extends BaseController
         $data = [
             'pourcentagesParEtat' => $pourcentagesParEtat,
         ];
+        $session = session();
         $template =
-            view('templates/gestionHeader.php') .
+        view('templates/gestionHeader.php', [
+            'loggedIn' => $session->get('loggedIn'),
+            'name' => $session->get('username')
+        ]) .
             view('detailExemplaires', $data) .
             view('templates/footer.php');
 

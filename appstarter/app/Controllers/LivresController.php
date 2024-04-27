@@ -31,12 +31,18 @@ class LivresController extends BaseController
         $template = '';
         if ($session->has('role') && $session->get('role') == 'admin') {
             $template =
-                view('templates/gestionHeader.php') .
+            view('templates/gestionHeader.php', [
+                'loggedIn' => $session->get('loggedIn'),
+                'name' => $session->get('username')
+            ]) .
                 view('gestionLivres.php', $data) .
                 view('templates/footer.php');
         } else {
             $template =
-                view('templates/gestionHeader.php') .
+                view('templates/gestionHeader.php', [
+                    'loggedIn' => $session->get('loggedIn'),
+                    'name' => $session->get('username')
+                ]) .
                 view('abonneLivres.php', $data) .
                 view('templates/footer.php');
         }

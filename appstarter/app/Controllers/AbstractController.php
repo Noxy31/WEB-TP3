@@ -11,8 +11,12 @@ abstract class AbstractController extends BaseController
 
     public function index($data = [])
     {
+        $session = session();
         $template =
-            view('templates/gestionHeader.php') .
+            view('templates/gestionHeader.php', [
+                'loggedIn' => $session->get('loggedIn'),
+                'name' => $session->get('username')
+            ]) .
             view(($this->template), $data) .
             view('templates/footer.php');
         return $template;
@@ -22,9 +26,13 @@ abstract class AbstractController extends BaseController
     {
         $abonneModel = model($this->classModel);
         $abonne = $abonneModel->find($matricule_abonne);
-
+        
+        $session = session();
         $template =
-            view('templates/gestionHeader.php') .
+        view('templates/gestionHeader.php', [
+            'loggedIn' => $session->get('loggedIn'),
+            'name' => $session->get('username')
+        ]) .
             view(($this->templateDetail), ['abonne' => $abonne]) .
             view('templates/footer.php');
         return $template;
