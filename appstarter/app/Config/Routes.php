@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 
  // Routes Administrateur
+$routes->get('/', 'Connection::index');// Page de Login
 $routes->get('/login', 'Connection::index'); // Page de Login
 $routes->post('/login', 'Connection::attemptLogin'); // Post pour tentative de connexion
 $routes->get('/home', 'HomeController::home'); // Home aprés Login
