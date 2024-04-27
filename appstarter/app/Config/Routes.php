@@ -17,6 +17,7 @@ $routes->get('/gestion_livres','LivresController::index', ['filter' =>  \App\Fil
 $routes->post('/livres/add', 'LivresController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un livre
 $routes->get('/gestion_exemplaires','ExemplaireController::index', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page de gestion des exemplaires
 $routes->post('/exemplaires/add', 'ExemplaireController::add', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour ajouter un exemplaire
+$routes->get('/gestion_etat_exemplaires', 'ExemplaireController::gestionEtatExemplaires', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour aller sur la page de détails des états des exemplaires
 $routes->post('/abonne/delete/(:any)', 'AbonneController::delete/$1',['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour supprimer un abonne
 $routes->get('/gestion_emprunts', 'EmpruntsController::list',['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Get pour avoir la page des emprunts
 $routes->post('/emprunts/update/(:num)', 'EmpruntsController::update/$1', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour mettre a jour les emprunt

@@ -13,6 +13,9 @@
             <h1>Gestion des exemplaires</h1>
         </div>
         <div>
+            <form action="<?= base_url('/gestion_etat_exemplaires') ?>" method="get">
+                <button type="submit" class="bouton">Gestion de l'état des exemplaires</button>
+            </form>
             <button class="bouton" id="btnAddExemplaire">Ajouter un exemplaire</button>
             <script>
                 document.getElementById('btnAddExemplaire').addEventListener('click', function() { // Fonction pour faire apparaitre le formulaire d'ajout

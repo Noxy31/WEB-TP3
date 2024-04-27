@@ -60,4 +60,34 @@ class ExemplaireModel extends Model
 
         return $formattedResults;
     }
+
+    public function getPourcentagesParEtat()
+    {
+        $query = $this->select('livre.titre_livre, 
+                            SUM(CASE WHEN exemplaire.code_usure = "NEUF" THEN 1 ELSE 0 END) as count_neuf,
+                            SUM(CASE WHEN exemplaire.code_usure = "TRES BON" THEN 1 ELSE 0 END) as count_tres_bon,
+                            SUM(CASE WHEN exemplaire.code_usure = "BON" THEN 1 ELSE 0 END) as count_bon,
+                            SUM(CASE WHEN exemplaire.code_usure = "MOYEN" THEN 1 ELSE 0 END) as count_moyen,
+                            SUM(CASE WHEN exemplaire.code_usure = "DEGRADE" THEN 1 ELSE 0 END) as count_degrade,
+                            COUNT(*) as total_exemplaires')
+            ->join('livre', 'livre.code_catalogue = exemplaire.code_catalogue')
+            ->groupBy('livre.titre_livre');
+
+        // Exécutez la requête
+        $results = $query->findAll();
+
+        // Calculer les pourcentages
+        foreach ($results as &$row) {
+            $totalExemplaires = $row['total_exemplaires'];
+            $row['pourcentage_neuf'] = round(($row['count_neuf'] / $totalExemplaires) * 100, 2);
+            $row['pourcentage_tres_bon'] = round(($row['count_tres_bon'] / $totalExemplaires) * 100, 2);
+            $row['pourcentage_bon'] = round(($row['count_bon'] / $totalExemplaires) * 100, 2);
+            $row['pourcentage_moyen'] = round(($row['count_moyen'] / $totalExemplaires) * 100, 2);
+            $row['pourcentage_degrade'] = round(($row['count_degrade'] / $totalExemplaires) * 100, 2);
+            // Supprimer les colonnes non nécessaires
+            unset($row['total_exemplaires'], $row['count_neuf'], $row['count_tres_bon'], $row['count_bon'], $row['count_moyen'], $row['count_degrade']);
+        }
+
+        return $results;
+    }
 }

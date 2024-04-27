@@ -10,7 +10,7 @@ class ExemplaireController extends BaseController
         $gestionLivresModel = new \App\Models\LivresModel();
         $exemplaires = $gestionExemplaireModel->getExemplaire();
         $livres = $gestionLivresModel->getLivres();
-        
+
         $data = [
             'exemplaires' => $exemplaires,
             'livres' => $livres,
@@ -24,7 +24,8 @@ class ExemplaireController extends BaseController
         return $template;
     }
 
-    public function add() {   
+    public function add()
+    {
         $exemplaireModel = new \App\Models\ExemplaireModel();
 
         $codeCatalogue = $this->request->getPost('codeCatalogue');
@@ -36,5 +37,20 @@ class ExemplaireController extends BaseController
         $exemplaireId = $exemplaireModel->addExemplaire($codeCatalogue, $nomEditeur, $codeUsure, $dateAcquisition, $emplacementRayon);
 
         return redirect()->to(base_url('/gestion_exemplaires'));
+    }
+
+    public function gestionEtatExemplaires()
+    {
+        $exemplaireModel = new \App\Models\ExemplaireModel();
+        $pourcentagesParEtat = $exemplaireModel->getPourcentagesParEtat();
+        $data = [
+            'pourcentagesParEtat' => $pourcentagesParEtat,
+        ];
+        $template =
+            view('templates/gestionHeader.php') .
+            view('detailExemplaires', $data) .
+            view('templates/footer.php');
+
+        return $template;
     }
 }

@@ -164,6 +164,11 @@ h1 {
     font-size: 3rem;
 }
 
+h2 {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
 table {
     color: #ffffff;
     margin: 40px;
@@ -207,10 +212,11 @@ td {
 
 form {
     font-size: 1.5rem;
-    color:#ffffff;
+    color: #ffffff;
 }
 
-select, input {
+select,
+input {
     font-size: 1rem;
     padding: 0.2rem;
     border-radius: 8px;
@@ -244,12 +250,22 @@ input {
     max-width: 200px;
     overflow-y: auto;
     z-index: 1;
-    color:#121212;
-  }
-  .autocomplete-suggestions li {
+    color: #121212;
+}
+
+.autocomplete-suggestions li {
     padding: 5px 10px;
     cursor: pointer;
-  }
-  .autocomplete-suggestions li:hover {
+}
+
+.autocomplete-suggestions li:hover {
     background-color: #f0f0f0;
-  }
+}
+
+.bad-state {
+    background-color: rgb(99, 35, 35);
+}
+
+.good-state {
+    background-color: rgb(60, 141, 60);
+}
