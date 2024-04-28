@@ -16,10 +16,30 @@
             <?php endif; ?>
         </div>
         <div>
-            <form method="post" action="/faire_demande_emprunt">
-                <input type="hidden" name="code_catalogue" value="<?php echo $livre['code_catalogue']; ?>">
-                <button class='bouton' type="submit">Faire une demande d'emprunt</button>
-            </form>
+            <?php
+            $disponible = false;
+            foreach ($exemplaires as $exemplaire) {
+                if ($exemplaire['code_usure'] !== 'DEGRADE') {
+                    $emprunte = false;
+                    foreach ($emprunts as $emprunt) {
+                        if ($emprunt['cote_exemplaire'] === $exemplaire['cote_exemplaire']) {
+                            $emprunte = true;
+                            break;
+                        }
+                    }
+                    if (!$emprunte) {
+                        $disponible = true;
+                        break;
+                    }
+                }
+            }
+            ?>
+            <?php if ($disponible) : ?>
+                <form method="post" action="/faire_demande_emprunt">
+                    <input type="hidden" name="code_catalogue" value="<?php echo $livre['code_catalogue']; ?>">
+                    <button class='bouton' type="submit">Faire une demande d'emprunt</button>
+                </form>
+            <?php endif; ?>
             <?php if ($exemplaires && count($exemplaires) > 0) : ?>
                 <table>
                     <thead>
@@ -31,26 +51,28 @@
                     </thead>
                     <tbody>
                         <?php foreach ($exemplaires as $exemplaire) : ?>
-                            <tr>
-                                <td><?= $exemplaire['nom_editeur'] ?></td>
-                                <td><?= $exemplaire['emplacement_rayon'] ?></td>
-                                <td>
-                                    <?php
-                                    $emprunte = false;
-                                    foreach ($emprunts as $emprunt) {
-                                        if ($emprunt['cote_exemplaire'] === $exemplaire['cote_exemplaire']) {
-                                            $emprunte = true;
-                                            break;
+                            <?php if ($exemplaire['code_usure'] !== 'DEGRADE') : ?>
+                                <tr>
+                                    <td><?= $exemplaire['nom_editeur'] ?></td>
+                                    <td><?= $exemplaire['emplacement_rayon'] ?></td>
+                                    <td>
+                                        <?php
+                                        $emprunte = false;
+                                        foreach ($emprunts as $emprunt) {
+                                            if ($emprunt['cote_exemplaire'] === $exemplaire['cote_exemplaire']) {
+                                                $emprunte = true;
+                                                break;
+                                            }
                                         }
-                                    }
-                                    if ($emprunte) {
-                                        echo "Non";
-                                    } else {
-                                        echo "Oui";
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
+                                        if ($emprunte) {
+                                            echo "Non";
+                                        } else {
+                                            echo "Oui";
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
