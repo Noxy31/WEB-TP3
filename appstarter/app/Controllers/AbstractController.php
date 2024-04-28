@@ -68,7 +68,7 @@ abstract class AbstractController extends BaseController
         return view('SuccessRequest');
     }
 
-    public function update($matricule_abonne)
+    public function update($matricule_abonne) // Fonction pour mettre a jour un abonne depuis la page admin
     {
         $abonneModel = model($this->classModel);
         if (!$this->request->getPost()) {
@@ -88,7 +88,7 @@ abstract class AbstractController extends BaseController
         return redirect()->to('gestion_abonnes');
     }
 
-    public function updateInfos()
+    public function updateInfos() // Fonction pour mettre a jour un abonné depuis la page d'informations d'un abonné
     {
         $data = $this->request->getPost();
         $validationRules = [
@@ -112,7 +112,7 @@ abstract class AbstractController extends BaseController
         return view('SuccessRequest');
     }
 
-    public function delete($primaryKey)
+    public function delete($primaryKey) // Fonction pour supprimer un abonné depuis la page admin
     {
         $model = model($this->classModel);
         if (!$model->find($primaryKey)) {

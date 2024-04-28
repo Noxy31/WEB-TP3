@@ -15,7 +15,7 @@ class DemandesController extends AbstractController
     {
         $abonneModel = model(AbonneModel::class);
         $demandes = $abonneModel->getAbonnes();
-        usort($demandes, function ($a, $b) {
+        usort($demandes, function ($a, $b) { // Passage des données string en time pour les date de demandes
             if ($a['code_catalogue'] == $b['code_catalogue']) {
                 return strtotime($a['date_demande']) - strtotime($b['date_demande']);
             }
@@ -25,7 +25,7 @@ class DemandesController extends AbstractController
         return $this->index($data);
     }
 
-    public function mesDemandes()
+    public function mesDemandes() // Fonction pour afficher la page des demandes d'un abonné
     {
         $session = session();
         $this->template = 'abonneDemandes';
@@ -36,9 +36,9 @@ class DemandesController extends AbstractController
         return $this->index($data);
     }
 
-    public function delete($code_catalogue)
+    public function delete($code_catalogue) // Fonction pour supprimer une demande
     {
-        $demandeModel = new \App\Models\AbonneModel(); // Remplacez DemandeModel par le nom de votre modèle de demandes
+        $demandeModel = new \App\Models\AbonneModel();
         $success = $demandeModel->deleteDemande($code_catalogue);
 
         if (!$success) {
