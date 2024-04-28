@@ -42,6 +42,15 @@ class AbonneModel extends Model
         return $this->findAll();
     }
 
+    public function getDemandesByMatricule($matricule_abonne)
+    {
+        return $this->select('abonne.*, demande.date_demande, demande.code_catalogue, livre.titre_livre')
+            ->join('demande', 'abonne.matricule_abonne = demande.matricule_abonne')
+            ->join('livre', 'livre.code_catalogue = demande.code_catalogue')
+            ->where('demande.matricule_abonne', $matricule_abonne)
+            ->findAll();
+    }
+
     public function updateAbonne($matricule_abonne, $data)
     {
         return $this->update($matricule_abonne, $data);
@@ -50,5 +59,10 @@ class AbonneModel extends Model
     public function deleteAbonne($matricule_abonne)
     {
         return $this->where('matricule_abonne', $matricule_abonne)->delete();
+    }
+
+    public function deleteDemande($code_catalogue)
+    {
+        return $this->db->table('demande')->where('code_catalogue', $code_catalogue)->delete();
     }
 }

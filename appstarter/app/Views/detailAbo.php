@@ -17,6 +17,9 @@
         <?php endif; ?>
         <div>
             <form action="<?php echo base_url('/abonne/update/' . $abonne['matricule_abonne']); ?>" method="post">
+                <label for="matricule_abonne">Matricule :</label>
+                <input type="number" id="nom" name='matricule_abonne' value="<?php echo $abonne['matricule_abonne']; ?>"><br>
+
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name='nom_abonne' value="<?php echo $abonne['nom_abonne']; ?>"><br>
 

@@ -29,9 +29,14 @@ $routes->post('/emprunts/delete/(:any)', 'EmpruntsController::deleteEmprunts/$1'
 $routes->get('/emprunts/suggestions', 'AutoCompleteController::autocompleteAbo'); // Autocompletion Abo
 $routes->get('/exemplaires/suggestions', 'AutoCompleteController::autocompleteLivres'); // Autocompletion Livres
 $routes->get('/gestion_demandes', 'DemandesController::list', ['filter' =>  \App\Filters\AdminFilter::class]); // Get pour avoir la page de gestion des demandes
-$routes->post('/demandes/delete/(:any)', 'DemandesController::delete/$1', ['filter' =>  \App\Filters\AdminFilter::class]); // Post pour update la DBB et supprimer une demande
+$routes->post('/demandes/delete/(:any)', 'DemandesController::delete/$1', ['filter' =>  \App\Filters\AuthenticatedFilter::class]); // Post pour update la DBB et supprimer une demande
 
  // Routes Abonné
  $routes->get('/liste_livres', 'LivresController::index', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour avoir la liste des livres pour l'abonné
  $routes->get('/livres/detail/(:any)', 'LivresController::detail/$1', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour 
  $routes->post('/faire_demande_emprunt', 'LivresController::faireDemandeEmprunt', ['filter' =>  \App\Filters\SubscriberFilter::class]);// Post pour faire une demande d'emprunt
+ $routes->get('/mes_emprunts', 'EmpruntsController::mesEmprunts', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour avoir la page des emprunts d'un abo
+ $routes->get('/mes_demandes', 'DemandesController::mesDemandes', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour avoir la page des demandes d'un abo
+ $routes->get('/mes_informations', 'AbonneController::infos', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Get pour avoir la page des infos d'un abo
+ $routes->post('/informations/update', 'AbonneController::updateInfos', ['filter' =>  \App\Filters\SubscriberFilter::class]); // Post pour mettre a jour les infos des abonnés
+ 

@@ -1,9 +1,9 @@
 <div id="topbar">
     <ul>
         <li class="btn"><a href="<?php echo base_url('liste_livres'); ?>">Liste des livres</a></li>
-        <li><a href="<?php echo base_url(''); ?>">Mes emprunts</a></li>
-        <li><a href="<?php echo base_url(''); ?>">Mes demandes</a></li>
-        <li><a href="<?php echo base_url(''); ?>">Mes informations</a></li>
+        <li><a href="<?php echo base_url('mes_emprunts'); ?>">Mes emprunts</a></li>
+        <li><a href="<?php echo base_url('mes_demandes'); ?>">Mes demandes</a></li>
+        <li><a href="<?php echo base_url('mes_informations'); ?>">Mes informations</a></li>
     </ul>
 </div>
 <div id="content">
@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
                             <th>Edition</th>
+                            <th>Emplacement</th>
                             <th>Disponibilité</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                         <?php foreach ($exemplaires as $exemplaire) : ?>
                             <tr>
                                 <td><?= $exemplaire['nom_editeur'] ?></td>
+                                <td><?= $exemplaire['emplacement_rayon'] ?></td>
                                 <td>
                                     <?php
                                     $emprunte = false;

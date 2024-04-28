@@ -25,8 +25,26 @@ class DemandesController extends AbstractController
         return $this->index($data);
     }
 
+    public function mesDemandes()
+    {
+        $session = session();
+        $this->template = 'abonneDemandes';
+        $matricule_abonne = $session->get('matricule');
+        $demandesModel = new \App\Models\AbonneModel();
+        $demandes = $demandesModel->getDemandesByMatricule($matricule_abonne);
+        $data['demandes'] = $demandes;
+        return $this->index($data);
+    }
+
     public function delete($code_catalogue)
     {
-        return parent::delete($code_catalogue);
+        $demandeModel = new \App\Models\AbonneModel(); // Remplacez DemandeModel par le nom de votre modèle de demandes
+        $success = $demandeModel->deleteDemande($code_catalogue);
+
+        if (!$success) {
+            return view('FailedRequest');
+        }
+
+        return view('SuccessRequest');
     }
 }

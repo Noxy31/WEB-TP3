@@ -28,7 +28,7 @@
                             <td><?php echo $demande['code_catalogue']; ?></td>
                             <td><?php echo $demande['date_demande']; ?></td>
                             <td>
-                                <form action="<?= base_url('/demandes/delete/' . $demande['matricule_abonne']) ?>" method="post">
+                                <form action="<?= base_url('/demandes/delete/' . $demande['code_catalogue']) ?>" method="post">
                                     <input type="submit" value="Supprimer la demande">
                                 </form>
                             </td>

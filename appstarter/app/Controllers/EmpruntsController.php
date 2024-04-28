@@ -34,4 +34,15 @@ class EmpruntsController extends AbstractController
         }
         return view('SuccessRequest');
     }
+
+    public function mesEmprunts()
+    {
+        $session = session();
+        $this->template = 'abonneEmprunts';
+        $matricule_abonne = $session->get('matricule');
+        $empruntsModel = new \App\Models\EmpruntsModel();
+        $emprunts = $empruntsModel->getEmpruntsWithLivresByMatricule($matricule_abonne);
+        $data['emprunts'] = $emprunts;
+        return $this->index($data);
+    }
 }
