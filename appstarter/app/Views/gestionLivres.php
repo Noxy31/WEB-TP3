@@ -38,43 +38,57 @@
                 </form>
             </div>
         </div>
+        <form class="search" method="GET" action="<?php echo base_url('/gestion_livres'); ?>">
+                <input type="text" name="search" placeholder="Rechercher un livre">
+                <button class="bouton-search" type="submit">Rechercher</button>
+            </form>
+        <?php $resultsFound = false; ?>
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Code Catalogue</th>
-                        <th>Titre</th>
-                        <th>Auteur</th>
-                        <th>Thèmes</th>
-                        <th>Mots Clé</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($livres as $livre) : ?>
+            <?php foreach ($livres as $livre) : ?>
+                <?php if (empty($_GET['search']) || strpos(strtolower($livre['titre_livre']), strtolower($_GET['search'])) !== false) : ?>
+                    <?php $resultsFound = true; ?>
+                    <?php break; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if (!$resultsFound && !empty($_GET['search'])) : ?>
+                <p>Aucun résultat ne correspond à cette recherche</p>
+            <?php else : ?>
+                <table>
+                    <thead>
                         <tr>
-                            <td><?= $livre['code_catalogue'] ?></td>
-                            <td><?= $livre['titre_livre'] ?></td>
-                            <td><?= $livre['nom_auteur'] ?></td>
-                            <td><?= $livre['theme_livre'] ?></td>
-                            <td>
-                                <?php
-                                $motsCleArray = explode(',', $livre['mots_cle']);  // Permet de séparer les mots clés
-                                $lastKey = count($motsCleArray) - 1;
-                                foreach ($motsCleArray as $key => $motCle) :
-                                    echo $motCle;
-                                    if ($key !== $lastKey) {
-                                        echo ', ';
-                                    }
-                                endforeach;
-                                ?>
-                            </td>
+                            <th>Code Catalogue</th>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Thèmes</th>
+                            <th>Mots Clé</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($livres as $livre) : ?>
+                            <?php if (empty($_GET['search']) || strpos(strtolower($livre['titre_livre']), strtolower($_GET['search'])) !== false) : ?>
+                                <tr>
+                                    <td><?= $livre['code_catalogue'] ?></td>
+                                    <td><?= $livre['titre_livre'] ?></td>
+                                    <td><?= $livre['nom_auteur'] ?></td>
+                                    <td><?= $livre['theme_livre'] ?></td>
+                                    <td>
+                                        <?php
+                                        $motsCleArray = explode(',', $livre['mots_cle']);
+                                        $lastKey = count($motsCleArray) - 1;
+                                        foreach ($motsCleArray as $key => $motCle) :
+                                            echo $motCle;
+                                            if ($key !== $lastKey) {
+                                                echo ', ';
+                                            }
+                                        endforeach;
+                                        ?>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
     </div>
-
-</div>
-
 </div>

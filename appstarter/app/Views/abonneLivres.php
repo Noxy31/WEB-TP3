@@ -60,7 +60,6 @@
                         </tbody>
                     </table>
                 <?php endif; ?>
-                
             <?php endif; ?>
             <?php if (!$resultsFound && !empty($_GET['search'])) : ?>
                 <p>Aucun résultat ne correspond à cette recherche</p>

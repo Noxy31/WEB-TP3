@@ -53,35 +53,49 @@
                     <input class="bouton" type="submit" value="Valider">
                 </form>
             </div>
+            <form class="search" method="GET" action="<?php echo base_url('/gestion_exemplaires'); ?>">
+                <input type="text" name="search" placeholder="Rechercher un exemplaire">
+                <button class="bouton-search" type="submit">Rechercher</button>
+            </form>
         </div>
+        <?php $resultsFound = false; ?>
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cote Exemplaire</th>
-                        <th>Titre</th>
-                        <th>Éditeur</th>
-                        <th>Code Usure</th>
-                        <th>Date Acquisition</th>
-                        <th>Emplacement Rayon</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($exemplaires as $exemplaire) : ?>
+            <?php foreach ($exemplaires as $exemplaire) : ?>
+                <?php if (empty($_GET['search']) || strpos(strtolower($exemplaire['titre_livre']), strtolower($_GET['search'])) !== false) : ?>
+                    <?php $resultsFound = true; ?>
+                    <?php break; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if (!$resultsFound && !empty($_GET['search'])) : ?>
+                <p>Aucun résultat ne correspond à cette recherche</p>
+            <?php else : ?>
+                <table>
+                    <thead>
                         <tr>
-                            <td><?= $exemplaire['cote_exemplaire'] ?></td>
-                            <td><?= $exemplaire['titre_livre'] ?></td>
-                            <td><?= $exemplaire['nom_editeur'] ?></td>
-                            <td><?= $exemplaire['code_usure'] ?></td>
-                            <td><?= $exemplaire['date_acquisition'] ?></td>
-                            <td><?= $exemplaire['emplacement_rayon'] ?></td>
+                            <th>Cote Exemplaire</th>
+                            <th>Titre</th>
+                            <th>Éditeur</th>
+                            <th>Code Usure</th>
+                            <th>Date Acquisition</th>
+                            <th>Emplacement Rayon</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($exemplaires as $exemplaire) : ?>
+                            <?php if (empty($_GET['search']) || strpos(strtolower($exemplaire['titre_livre']), strtolower($_GET['search'])) !== false) : ?>
+                                <tr>
+                                    <td><?= $exemplaire['cote_exemplaire'] ?></td>
+                                    <td><?= $exemplaire['titre_livre'] ?></td>
+                                    <td><?= $exemplaire['nom_editeur'] ?></td>
+                                    <td><?= $exemplaire['code_usure'] ?></td>
+                                    <td><?= $exemplaire['date_acquisition'] ?></td>
+                                    <td><?= $exemplaire['emplacement_rayon'] ?></td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
     </div>
-
-</div>
-
 </div>

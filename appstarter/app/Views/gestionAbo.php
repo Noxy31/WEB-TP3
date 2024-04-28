@@ -46,41 +46,54 @@
                         <option value="Etudiant">Etudiant</option>
                         <option value="Artisan/Commercant/Chef d'entreprise">Artisan/Commercant/Chef d'entreprise</option>
                     </select><br>
-
                     <input class="bouton" type="submit" value="Valider">
                 </form>
             </div>
+            <form class="search" method="GET" action="<?php echo base_url('/gestion_abonnes'); ?>">
+                <input type="text" name="search" placeholder="Rechercher un abonné">
+                <button class="bouton-search" type="submit">Rechercher</button>
+            </form>
         </div>
+        <?php $resultsFound = false; ?>
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Matricule</th>
-                        <th>Nom</th>
-                        <th>Date de naissance</th>
-                        <th>Date d'adhésion</th>
-                        <th>Adresse</th>
-                        <th>Téléphone</th>
-                        <th>CSP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($abonnes as $abonne) : ?>
-                        <tr class="ligne-tableau" onclick="window.location='<?php echo base_url('/abonne/detail/' . $abonne['matricule_abonne']); ?>'">
-                            <td><?php echo $abonne['matricule_abonne']; ?></td>
-                            <td><?php echo $abonne['nom_abonne']; ?></td>
-                            <td><?php echo $abonne['date_naissance_abonne']; ?></td>
-                            <td><?php echo $abonne['date_adhesion_abonne']; ?></td>
-                            <td><?php echo $abonne['adresse_abonne']; ?></td>
-                            <td><?php echo $abonne['telephone_abonne']; ?></td>
-                            <td><?php echo $abonne['CSP_abonne']; ?></td>
+            <?php foreach ($abonnes as $abonne) : ?>
+                <?php if (empty($_GET['search']) || strpos(strtolower($abonne['nom_abonne']), strtolower($_GET['search'])) !== false) : ?>
+                    <?php $resultsFound = true; ?>
+                    <?php break; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if (!$resultsFound && !empty($_GET['search'])) : ?>
+                <p>Aucun résultat ne correspond à cette recherche</p>
+            <?php else : ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Nom</th>
+                            <th>Date de naissance</th>
+                            <th>Date d'adhésion</th>
+                            <th>Adresse</th>
+                            <th>Téléphone</th>
+                            <th>CSP</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($abonnes as $abonne) : ?>
+                            <?php if (empty($_GET['search']) || strpos(strtolower($abonne['nom_abonne']), strtolower($_GET['search'])) !== false) : ?>
+                                <tr class="ligne-tableau" onclick="window.location='<?php echo base_url('/abonne/detail/' . $abonne['matricule_abonne']); ?>'">
+                                    <td><?php echo $abonne['matricule_abonne']; ?></td>
+                                    <td><?php echo $abonne['nom_abonne']; ?></td>
+                                    <td><?php echo $abonne['date_naissance_abonne']; ?></td>
+                                    <td><?php echo $abonne['date_adhesion_abonne']; ?></td>
+                                    <td><?php echo $abonne['adresse_abonne']; ?></td>
+                                    <td><?php echo $abonne['telephone_abonne']; ?></td>
+                                    <td><?php echo $abonne['CSP_abonne']; ?></td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
     </div>
-
-</div>
-
 </div>

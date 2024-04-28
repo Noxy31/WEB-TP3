@@ -409,3 +409,12 @@ input {
     position: relative;
     top: 50px;
 }
+
+.search {
+    margin-top: 20px;
+}
+
+.bouton-search {
+    font-family: 'PopBold';
+    border-radius: 5px;
+}
