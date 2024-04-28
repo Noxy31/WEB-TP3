@@ -17,11 +17,12 @@ class AuteurModel extends Model
     {
         return $this->findAll();
     }
+
     public function getAllowedFields() {
         return $this->allowedFields;
     }
 
-    public function getOrCreateAuteur($nomAuteur)
+    public function getOrCreateAuteur($nomAuteur) // Récupère les données d'un auteur, le crée le cas échéant
     {
         $auteur = $this->where('nom_auteur', $nomAuteur)->first();
 

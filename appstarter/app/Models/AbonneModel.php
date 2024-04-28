@@ -20,12 +20,12 @@ class AbonneModel extends Model
         'CSP_abonne'
     ];
 
-    public function getAllowedFields()
+    public function getAllowedFields() // Récupère les champs autorisés
     {
         return $this->allowedFields;
     }
 
-    public function getAbonneByMatricule($matricule)
+    public function getAbonneByMatricule($matricule) // Récupère un abonné grace a son matricule
     {
         $result = $this->find($matricule);
         if ($result !== null) {
@@ -34,7 +34,7 @@ class AbonneModel extends Model
         return null;
     }
 
-    public function getAbonnes()
+    public function getAbonnes() // Récupère les abonnés, dans l'espace abonné avec une jointure sur la table demande et sur la table livre
     {
         $this->select('abonne.*, demande.date_demande, demande.code_catalogue');
         $this->join('demande', 'abonne.matricule_abonne = demande.matricule_abonne');
@@ -42,7 +42,7 @@ class AbonneModel extends Model
         return $this->findAll();
     }
 
-    public function getDemandesByMatricule($matricule_abonne)
+    public function getDemandesByMatricule($matricule_abonne) // Même qu'au dessus mais pour les abonnés puisque le matricule est récupérable dans le matricule se trouvant dans l'url
     {
         return $this->select('abonne.*, demande.date_demande, demande.code_catalogue, livre.titre_livre')
             ->join('demande', 'abonne.matricule_abonne = demande.matricule_abonne')
@@ -51,17 +51,17 @@ class AbonneModel extends Model
             ->findAll();
     }
 
-    public function updateAbonne($matricule_abonne, $data)
+    public function updateAbonne($matricule_abonne, $data) // Mise a jour d'un abonné
     {
         return $this->update($matricule_abonne, $data);
     }
 
-    public function deleteAbonne($matricule_abonne)
+    public function deleteAbonne($matricule_abonne) // Suppression d'un abonné
     {
         return $this->where('matricule_abonne', $matricule_abonne)->delete();
     }
 
-    public function deleteDemande($code_catalogue)
+    public function deleteDemande($code_catalogue) // Suppressiond d'une demande
     {
         return $this->db->table('demande')->where('code_catalogue', $code_catalogue)->delete();
     }

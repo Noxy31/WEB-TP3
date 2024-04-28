@@ -12,7 +12,7 @@ class AbonneController extends AbstractController
     protected $return = '/gestion_abonnes';
     protected $data = 'abonnes';
 
-    public function list()
+    public function list() // Passage des données a la vue en récupérant le rôle
     {
         $session = session();
         if ($session->has('role') && $session->get('role') == 'admin') {
@@ -27,10 +27,5 @@ class AbonneController extends AbstractController
         ];
 
         return $this->index($data);
-    }
-
-    public function delete($matricule_abonne)
-    {
-        return parent::delete($matricule_abonne);
     }
 }

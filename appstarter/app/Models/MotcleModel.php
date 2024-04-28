@@ -18,15 +18,15 @@ class MotcleModel extends Model
         return $this->findAll();
     }
 
-    public function getOrCreateMotCle($motCle)
+    public function getOrCreateMotCle($motCle) // Récupération ou création d'un mot clé
     {
-        $motcle = $this->where('motCle', $motCle)->first(); // verifie si le mot clé existe
+        $motcle = $this->where('motCle', $motCle)->first();
 
         if ($motcle) {
-            return $motcle['id_motCle']; // retourne l'id si il existe deja
+            return $motcle['id_motCle'];
         }
 
-        $this->insert(['motCle' => $motCle]); // retourne le nouvel id et l'ajoute la bdd si il existe pas 
+        $this->insert(['motCle' => $motCle]);
         return $this->insertID();
     }
 }

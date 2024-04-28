@@ -10,7 +10,7 @@ class EcritModel extends Model
     protected $primaryKey = ['code_catalogue', 'id_auteur'];
     protected $allowedFields = ['code_catalogue', 'id_auteur'];
 
-    public function insertEcrit($codeCatalogue, $idAuteur)
+    public function insertEcrit($codeCatalogue, $idAuteur) // insertion dans la table ecrit
     {
         return $this->insert(['code_catalogue' => $codeCatalogue, 'id_auteur' => $idAuteur]);
     }

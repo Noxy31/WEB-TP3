@@ -22,7 +22,7 @@ class ExemplaireModel extends Model
         return $this->allowedFields;
     }
 
-    public function getExemplaire()
+    public function getExemplaire() // Récupération d'un exemplaire, avec jointure sur livre, en excluant les exemplaire dégrdés
     {
         $exemplaires = $this->select('exemplaire.cote_exemplaire, livre.titre_livre, exemplaire.nom_editeur, exemplaire.code_usure, exemplaire.date_acquisition, exemplaire.emplacement_rayon')
             ->join('livre', 'livre.code_catalogue = exemplaire.code_catalogue')
@@ -32,7 +32,7 @@ class ExemplaireModel extends Model
         return $exemplaires;
     }
 
-    public function addExemplaire($codeCatalogue, $nomEditeur, $codeUsure, $dateAcquisition, $emplacementRayon)
+    public function addExemplaire($codeCatalogue, $nomEditeur, $codeUsure, $dateAcquisition, $emplacementRayon) // Ajout d'un exemplaire
     {
         return $this->insert([
             'nom_editeur' => $nomEditeur,
@@ -43,25 +43,7 @@ class ExemplaireModel extends Model
         ]);
     }
 
-    public function searchByName($term)
-    {
-        $results = $this->like('titre_livre', $term)->findAll();
-
-        if (!is_array($results)) {
-            $results = [];
-        }
-        $formattedResults = [];
-        foreach ($results as $result) {
-            $formattedResults[] = [
-                'titre_livre' => $result['titre_livre'],
-                'code_catalogue' => $result['code_catalogue']
-            ];
-        }
-
-        return $formattedResults;
-    }
-
-    public function getPourcentagesParEtat()
+    public function getPourcentagesParEtat() // Fonction de récupération des exemplaire, avec jointure sur la table livre pour récupérer le titre du livre, et transformation des résultats de la requête en pourcentage sur leurs code_usure (ce commentaire est bien trop long)
     {
         $query = $this->select('livre.titre_livre, 
                             SUM(CASE WHEN exemplaire.code_usure = "NEUF" THEN 1 ELSE 0 END) as count_neuf,

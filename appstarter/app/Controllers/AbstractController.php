@@ -10,7 +10,7 @@ abstract class AbstractController extends BaseController
     protected $return = "";
     protected $templateInfos = '';
 
-    public function index($data = [])
+    public function index($data = []) // Fonction de passage des données a la vue
     {
         $session = session();
         $template =

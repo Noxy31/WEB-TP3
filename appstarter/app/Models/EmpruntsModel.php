@@ -22,7 +22,7 @@ class EmpruntsModel extends Model
         return $this->allowedFields;
     }
 
-    public function deleteEmpr($cote_exemplaire)
+    public function deleteEmpr($cote_exemplaire) // Suppression d'un emprunt
     {
         try {
             $this->where('cote_exemplaire', $cote_exemplaire)->delete();
@@ -32,7 +32,7 @@ class EmpruntsModel extends Model
         }
     }
 
-    public function getEmpruntsWithLivresByMatricule($matricule_abonne)
+    public function getEmpruntsWithLivresByMatricule($matricule_abonne) // Récupération des emprunts de l'abonne connecté
     {
         return $this->select('emprunte.*, livre.titre_livre')
             ->join('exemplaire', 'exemplaire.cote_exemplaire = emprunte.cote_exemplaire')
@@ -41,7 +41,7 @@ class EmpruntsModel extends Model
             ->findAll();
     }
 
-    public function isEmpruntExists($cote_exemplaire)
+    public function isEmpruntExists($cote_exemplaire) // Fonction de vérification de l'existence d'un emprunt pour un abonné
     {
         return $this->where('cote_exemplaire', $cote_exemplaire)->countAllResults() > 0;
     }

@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class Connection extends BaseController
 {
-    public function index()
+    public function index() // Passage des données a la vue 
     {
         $template =
             view('templates/gestionHeader.php') .
@@ -13,7 +13,7 @@ class Connection extends BaseController
         return $template;
     }
 
-    private function loginUser(?object $user = null)
+    private function loginUser(?object $user = null) // Récupère les informations de l'abonné ou de l'admin connecté
     {
         $session = session();
         if (isset($user)) {
@@ -33,7 +33,7 @@ class Connection extends BaseController
         return redirect()->to("home");
     }
 
-    public function attemptLogin()
+    public function attemptLogin() // Fonction de tentative de connexion
     {
         $abonneModel = new \App\Models\AbonneModel();
         $values = $this->request->getPost(['login', 'password']);

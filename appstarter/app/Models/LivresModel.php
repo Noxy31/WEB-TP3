@@ -14,7 +14,7 @@ class LivresModel extends Model
         'theme_livre',
     ];
 
-    public function faireDemandeEmprunt($matricule_abonne, $code_catalogue)
+    public function faireDemandeEmprunt($matricule_abonne, $code_catalogue) // Méthode de gestion des demandes d'emprunt, avec vérification de son existence
     {
         $demandeExistante = $this->demandeExiste($matricule_abonne, $code_catalogue);
 
@@ -32,7 +32,7 @@ class LivresModel extends Model
         return true;
     }
 
-    public function demandeExiste($matricule_abonne, $code_catalogue)
+    public function demandeExiste($matricule_abonne, $code_catalogue) // Méthode de vérification de l'existence d'une demande
     {
         $demande = $this->db->table('demande')
                             ->where('matricule_abonne', $matricule_abonne)
@@ -48,7 +48,7 @@ class LivresModel extends Model
         return $this->allowedFields;
     }
 
-    public function getLivres()
+    public function getLivres() // Récupération des livres, avec jointure sur les table ecrit, auteur, associe et motcle, et groupBy sur le code_catalogue
     {
         $livres = $this->select('livre.code_catalogue, livre.titre_livre, livre.theme_livre, auteur.nom_auteur, GROUP_CONCAT(motcle.motCle) as mots_cle')
             ->join('ecrit', 'ecrit.code_catalogue = livre.code_catalogue')
@@ -61,24 +61,24 @@ class LivresModel extends Model
         return $livres;
     }
 
-    public function addLivre($titreLivre, $auteur, $themeLivre, $motCle)
+    public function addLivre($titreLivre, $auteur, $themeLivre, $motCle) // Ajout d'un nouveau livre
     {
-        $this->insert(['titre_livre' => $titreLivre, 'theme_livre' => $themeLivre]); // creation du livre dans la bdd
+        $this->insert(['titre_livre' => $titreLivre, 'theme_livre' => $themeLivre]);
         $livreId = $this->insertID();
 
-        $auteurModel = new AuteurModel(); // creation de l'auteur dans la bdd
+        $auteurModel = new AuteurModel();
         $auteurId = $auteurModel->getOrCreateAuteur($auteur);
 
-        $ecritModel = new EcritModel(); // crée la relation dans la table ecrit
+        $ecritModel = new EcritModel();
         $ecritModel->insertEcrit($livreId, $auteurId);
 
-        $motcleModel = new MotcleModel(); // crée les mots clés dans motcle
+        $motcleModel = new MotcleModel();
         $motsCleArray = explode(',', $motCle);
         foreach ($motsCleArray as $motCle) {
             $motCleId = $motcleModel->getOrCreateMotCle($motCle);
 
-            if ($motCleId !== 0) { // vérifie si l'id du mot-clé est différent de 0
-                $associeModel = new AssocieModel(); // crée la relation livre-motclé
+            if ($motCleId !== 0) { 
+                $associeModel = new AssocieModel();
                 $associeModel->insertAssocie($livreId, $motCleId);
             }
         }
